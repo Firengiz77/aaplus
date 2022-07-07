@@ -54,7 +54,7 @@ $admin=App\Models\User::find($id);
             <a class="nav-link" href="{{ route('contact.index') }}">
               <i class="mdi mdi-contact-mail menu-icon"></i>
               <span class="menu-title">Contact</span>
-            </a> dfdf
+            </a> tyhtyhtyhtyh
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('gallery.index') }}">
