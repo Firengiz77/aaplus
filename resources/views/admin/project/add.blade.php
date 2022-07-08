@@ -13,7 +13,7 @@
         <div class="col-md-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Add News</h4>
+              <h4 class="card-title">Add Project</h4>
 
               <div class="lang">
                 <a href="az" class="btn btn-success {{ app()->isLocale('az') ? 'active' : '' }}">Az</a>
@@ -22,8 +22,22 @@
             </div>
 
 
-              <form class="forms-sample" method="POST" action="{{route('news.add')}}" enctype="multipart/form-data">
+              <form class="forms-sample" method="POST" action="{{route('project.add')}}" enctype="multipart/form-data">
                   @csrf
+
+                  <div class="form-group">
+                    {{-- <label for="project_type_id">Select Project Type</label>
+                    <input type="text" name="project_type_id" > --}}
+                    <div class="form-group">
+                      <label for="project_type_id">Select Project Type</label>
+                      <select class="form-control"  name="project_type_id" id="project_type_id">
+                        @foreach ($types as $type )
+                        <option value="{{ $type->id }}">{!! json_decode($type['name'])->{app()->getLocale()} !!}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
                   
                   <div class="form-group translate">
                     <label for="title">Title</label>
@@ -39,15 +53,11 @@
 
 
                   <div class="form-group">
-                    <label for="thumbnail">Thumbnail</label>
-                    <input type="file" name="thumbnail" class="form-control" id="thumbnail" >
+                    <label for="image">Thumbnail</label>
+                    <input type="file" name="image" class="form-control" id="image" >
                   </div>
 
-                  <div class="form-group">
-                    <label for="images">Multiple Images</label>
-                    <input type="file" name="images[]" multiple class="form-control" id="images" >
-                  </div>
-
+                
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
            
               </form>

@@ -9,6 +9,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Back\BackController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\CertificateController;
@@ -107,11 +110,32 @@ Route::get('/news/delete/{id}',[NewsController::class,'delete_news'])->name('del
 // project type routeleri
 Route::get('/project_type_index',[ProjecttypeController::class,'index'])->name('project_type.index');
 Route::post('/project_type/add',[ProjecttypeController::class,'create'])->name('project_type.add');
-Route::get('/project_type/edit/{id}',[ProjecttypeController::class,'edit'])->name('project_type.edit');
 Route::post('/project_type/update/{id}',[ProjecttypeController::class,'update'])->name('project_type.update');
 Route::get('/project_type/delete/{id}',[ProjecttypeController::class,'delete_project_type'])->name('delete-project_type');
 
 
+// project routeleri
+Route::get('/project_index',[ProjectController::class,'index'])->name('project.index');
+Route::get('/project_add',[ProjectController::class,'project_add'])->name('project.project_add');
+Route::post('/project/add',[ProjectController::class,'create'])->name('project.add');
+Route::post('/project/update/{id}',[ProjectController::class,'update'])->name('project.update');
+Route::get('/project/delete/{id}',[ProjectController::class,'delete_project'])->name('delete-project');
+
+
+// category routeleri
+Route::get('/category_index',[CategoryController::class,'index'])->name('category.index');
+Route::post('/category/add',[CategoryController::class,'create'])->name('category.add');
+Route::post('/category/update/{id}',[CategoryController::class,'update'])->name('category.update');
+Route::get('/category/delete/{id}',[CategoryController::class,'delete_category'])->name('delete-category');
+
+
+// product routeleri
+Route::get('/product_index',[ProductController::class,'index'])->name('product.index');
+Route::get('/product_add',[ProductController::class,'product_add'])->name('product.product_add');
+Route::post('/product/add',[ProductController::class,'create'])->name('product.add');
+Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
+Route::post('/product/update/{id}',[ProductController::class,'update'])->name('product.update');
+Route::get('/product/delete/{id}',[ProductController::class,'delete_product'])->name('delete-product');
 
 
 

@@ -50,11 +50,101 @@ $admin=App\Models\User::find($id);
               <span class="menu-title">Pages</span>
             </a>
           </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+              <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+              <span class="menu-title">Category And Product</span>
+            </a>
+          </li>
+
+          <div class="collapse" id="ui-basic2">
+            <ul class="nav flex-column sub-menu">
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('category.index') }}">
+                  <i class="mdi mdi-rocket menu-icon"></i>
+                  <span class="menu-title">Category</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('product.index') }}">
+                  <i class="mdi mdi-airballoon menu-icon"></i>
+                  <span class="menu-title">Products</span>
+                </a>
+              </li>
+
+              
+    
+            </ul>
+          </div>
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="mdi mdi-weather-sunny menu-icon"></i>
+              <span class="menu-title">Projects</span>
+            </a>
+          </li>
+
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+
+              <li class="nav-item">
+                <a class="nav-link"  href="{{ route('project.index') }}"  >
+                  <i class="mdi mdi-newspaper menu-icon"></i>
+                  <span class="menu-title">Projects</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('project_type.index') }}">
+                  <i class="mdi mdi-checkbox-marked-outline menu-icon"></i>
+                  <span class="menu-title">Project Type</span>
+                </a>
+              </li>
+
+              
+    
+            </ul>
+          </div>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+              <i class="mdi mdi-flag-triangle menu-icon"></i>
+              <span class="menu-title">Partners And Certificates</span>
+            </a>
+          </li>
+
+          <div class="collapse" id="ui-basic3">
+            <ul class="nav flex-column sub-menu">
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('partners.index') }}">
+                  <i class="mdi mdi-clipboard-outline menu-icon"></i>
+                  <span class="menu-title">Partners</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('certificate.index') }}">
+                  <i class="mdi mdi-certificate menu-icon"></i>
+                  <span class="menu-title">Certificate</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+
+
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('contact.index') }}">
               <i class="mdi mdi-contact-mail menu-icon"></i>
               <span class="menu-title">Contact</span>
-            </a> tyhtyhtyhtyh
+            </a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('gallery.index') }}">
@@ -70,12 +160,16 @@ $admin=App\Models\User::find($id);
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('project_type.index') }}">
-              <i class="mdi mdi-newspaper menu-icon"></i>
-              <span class="menu-title">Project Type</span>
-            </a>
-          </li>
+         
+
+      
+
+
+
+
+        
+
+       
 
           <li class="nav-item">
             <a class="nav-link" href="{{ route('slider.index') }}">
@@ -84,25 +178,19 @@ $admin=App\Models\User::find($id);
             </a>
           </li>
 
+          
+     
+        
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('counter.index') }}">
               <i class="mdi mdi-counter menu-icon"></i>
               <span class="menu-title">Counter</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('certificate.index') }}">
-              <i class="mdi mdi-certificate menu-icon"></i>
-              <span class="menu-title">Certificate</span>
-            </a>
-          </li>
+       
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('partners.index') }}">
-              <i class="mdi mdi-clipboard-outline menu-icon"></i>
-              <span class="menu-title">Partners</span>
-            </a>
-          </li>
+    
 
           <li class="nav-item">
             <a class="nav-link" href="{{ route('user.index') }}">
