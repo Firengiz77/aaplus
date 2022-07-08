@@ -32,6 +32,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// yeni deyisiklik
 
 // admin panel template get routeleri
 Route::prefix('admin')->group(function(){
