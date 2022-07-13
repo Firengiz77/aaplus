@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App;
+use Illuminate\Support\Facades\App;
 
 class PageResource extends JsonResource
 {

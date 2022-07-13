@@ -35,11 +35,19 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id'=>'required',
+            'icon'=>'required|mimes:jpg,png,webp|max:200',
         ]);
+
+        if ($request->hasFile('icon')) {
+            $data['icon'] = FileManager::fileUpload($request->file('icon'), 'category');
+        }
+
+
 
         Category::create([
             'name' => $data['name'],
             'category_id' => $data['category_id'],
+            'icon' => $data['icon'],
         ]);
 
         toastr()->success('Successfully Added!');
@@ -96,11 +104,20 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id'=>'required',
+            'icon'=>'required|mimes:jpg,png,webp|max:200',
         ]);
       
+        $data['icon'] = $category->icon;
+
+        if ($request->hasFile('icon')) {
+            FileManager::fileDelete('category', $category->icon);
+            $data['icon'] = FileManager::fileUpload($request->file('icon'), 'category');
+        }
+
         $category->update([
             'name' => $data['name'],
             'category_id' => $data['category_id'],
+            'icon' => $data['icon'],
         ]);
         toastr()->success('Successfully Updated!');
 

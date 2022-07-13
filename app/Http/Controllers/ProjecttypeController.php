@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjecttypeRequest;
 use App\Http\Requests\UpdateProjecttypeRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Helpers\FileManager;
 
 
 class ProjecttypeController extends Controller
@@ -32,9 +33,17 @@ class ProjecttypeController extends Controller
         $data = $request->all();
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'image'=>'required|mimes:jpg,png,webp|max:200',
            
         ]);
-        Projecttype::create($data);
+        if ($request->hasFile('image')) {
+            $data['image'] = FileManager::fileUpload($request->file('image'), 'projecttype');
+        }
+
+        Projecttype::create([
+            'image' => $data['image'],
+            'name' => $data['name'],
+        ]);
         toastr()->success('Successfully Added!');
 
         return redirect()->route('project_type.index');
@@ -86,9 +95,21 @@ class ProjecttypeController extends Controller
         $data = $request->all();
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'image'=>'required|mimes:jpg,png,webp|max:200',
         ]);
-      
-        $projecttype->update($data);
+
+        $data['image'] = $projecttype->image;
+
+        if ($request->hasFile('image')) {
+            FileManager::fileDelete('projecttype', $projecttype->image);
+            $data['image'] = FileManager::fileUpload($request->file('image'), 'projecttype');
+        }
+
+        $projecttype->update([
+            'name' => $data['name'],
+            'image' => $data['image'],
+        ]);
+  
         toastr()->success('Successfully Updated!');
 
         return redirect()->route('project_type.index');

@@ -2,7 +2,7 @@
 
 @section('container')
 @php
-$id=auth()->guard('admin')->id();
+$id=auth()->id();
 $admin=App\Models\User::find($id);
 
 @endphp

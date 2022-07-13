@@ -29,6 +29,7 @@
                                         <th>#</th>
                                         <th>Category </th>
                                         <th>Name </th>
+                                        <th> Icon </th>
                                         
                                     </tr>
                                 </thead>
@@ -42,9 +43,10 @@
                                               @else
                                               {!! json_decode($category['category']['name'])->{app()->getLocale()} !!}
 
-                                      
                                            @endif
                                           </td>
+                                          <td> <img class="card-img-top" style="border-radius:50%" src="{{  (!empty($category->icon)? url('uploads/category/'.$category->icon):url('uploads/category/icon-admin.png')  )}}" width="50px" height="50px"></td>
+
                                             <td class="py-1">
                                                 {!! json_decode($category['name'])->{app()->getLocale()} !!}
                                             </td>
@@ -70,7 +72,7 @@
                 <a href="ru" class="btn btn-success {{ app()->isLocale('ru') ? 'active' : '' }}">Ru</a>
             </div>
 
-              <form class="forms-sample" method="post" action="{{route('category.update',[ 'id'=> $category->id ])}}" >
+              <form class="forms-sample" method="post" enctype="multipart/form-data" action="{{route('category.update',[ 'id'=> $category->id ])}}" >
                   @csrf
                   
                   <div class="form-group ">
@@ -91,6 +93,12 @@
                     <input type="hidden" name="name" value="{{ $category->name }}">
                     <textarea required class="form-control" >{!! json_decode($category['name'])->{app()->getLocale()} !!}</textarea>
                   </div>
+
+                  <div class="form-group">
+                    <label for="icon">Icon</label>
+                    <input type="file" name="icon" class="form-control" id="icon" >
+                  </div>
+
 
        
         </div>
@@ -127,7 +135,7 @@
                       <a href="ru" class="btn btn-success {{ app()->isLocale('ru') ? 'active' : '' }}">Ru</a>
                   </div>
                     
-                    <form class="forms-sample" method="post" action="{{route('category.add')}}" >
+                    <form class="forms-sample" method="post" action="{{route('category.add')}}" enctype="multipart/form-data">
                         @csrf
                       
                         <div class="form-group">
@@ -148,6 +156,12 @@
                           <input type="hidden" name="name" value='{"az":"","en":"","ru":""}'>
                           <textarea required class="form-control" ></textarea>
                         </div>
+
+                        <div class="form-group">
+                          <label for="icon">Icon</label>
+                          <input type="file" name="icon" class="form-control" id="icon" >
+                        </div>
+
                   
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                  

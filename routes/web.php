@@ -1,7 +1,10 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SliderController;
@@ -14,7 +17,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Back\BackController;
 use App\Http\Controllers\Back\UserController;
+use App\Http\Controllers\Front\MainController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProjecttypeController;
 
 /*
@@ -138,7 +143,8 @@ Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('produc
 Route::post('/product/update/{id}',[ProductController::class,'update'])->name('product.update');
 Route::get('/product/delete/{id}',[ProductController::class,'delete_product'])->name('delete-product');
 
-
+// Messages routeler
+Route::get('/messages_index',[MessagesController::class,'index'])->name('messages.index');
 
 });
 
@@ -146,9 +152,58 @@ Route::get('/product/delete/{id}',[ProductController::class,'delete_product'])->
 Route::get('/register', function () { 
     return view('admin.user.register');
 })->name('register');
+
 Route::get('/login', function () {
     return view('admin.user.login');
 })->name('admin.login');
+
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
 Route::get('/logout', [UserController::class, 'logout'])->name('admin.logout');
+
+
+
+
+
+
+Route::get('/{locale}/lang', function ($locale) {
+    App::setLocale($locale);
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
+
+
+$lang = Request::segment(1);
+
+if(in_array($lang, ['az','en','ru'])){
+    app()->setLocale($lang);
+}else{
+    app()->setLocale('az');
+
+    $lang = '';
+}
+
+Route::get('/', function () {
+    return redirect(app()->getLocale());
+});
+
+
+Route::group([
+    'prefix' => $lang
+  ], function(){ 
+            Route::get('/', [MainController::class,'getPage'])->name('index');
+            Route::get('/single', [MainController::class,'getSinglePage'])->name('single');
+            Route::get('{slug}/{project?}', [MainController::class,'getPage'])->name('single2');
+
+});
+
+Route::post('/sendmail2', [MainController::class,'sendmail2'])->name('sendmail2');
+
+
+
+
+
+
+
+

@@ -28,6 +28,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name </th>
+                                        <th>Image</th>
                                         
                                       
                                     </tr>
@@ -39,6 +40,8 @@
                                             <td class="py-1">
                                                 {!! json_decode($projecttype['name'])->{app()->getLocale()} !!}
                                             </td>
+                                            <td> <img class="card-img-top" style="border-radius:50%" src="{{  (!empty($projecttype->image)? url('uploads/projecttype/'.$projecttype->image):url('uploads/projecttype/icon-admin.png')  )}}" width="50px" height="50px"></td>
+                                         
                                         
                                             <td>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_{{ $projecttype->id }}">
@@ -62,13 +65,18 @@
                 <a href="ru" class="btn btn-success {{ app()->isLocale('ru') ? 'active' : '' }}">Ru</a>
             </div>
 
-              <form class="forms-sample" method="post" action="{{route('project_type.update',[ 'id'=> $projecttype->id ])}}" >
+              <form class="forms-sample" method="post" enctype="multipart/form-data" action="{{route('project_type.update',[ 'id'=> $projecttype->id ])}}" >
                   @csrf
                   
                   <div class="form-group translate">
                     <label for="name">Name</label>
                     <input type="hidden" name="name" value="{{ $projecttype->name }}">
                     <textarea required class="form-control" >{!! json_decode($projecttype['name'])->{app()->getLocale()} !!}</textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" class="form-control" id="image" >
                   </div>
 
        
@@ -106,13 +114,18 @@
                       <a href="ru" class="btn btn-success {{ app()->isLocale('ru') ? 'active' : '' }}">Ru</a>
                   </div>
                     
-                    <form class="forms-sample" method="post" action="{{route('project_type.add')}}" >
+                    <form class="forms-sample" method="post" action="{{route('project_type.add')}}" enctype="multipart/form-data" >
                         @csrf
                         
                         <div class="form-group translate">
                           <label for="name">Name</label>
                           <input type="hidden" name="name" value='{"az":"","en":"","ru":""}'>
                           <textarea required class="form-control" ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="image">Image</label>
+                          <input type="file" name="image" class="form-control" id="image" >
                         </div>
                   
                       <button type="submit" class="btn btn-primary me-2">Submit</button>

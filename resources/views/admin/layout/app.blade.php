@@ -15,7 +15,7 @@
   </head>
   <body>
     @php
-$id=auth()->guard('admin')->id();
+$id=auth()->id();
 $admin=App\Models\User::find($id);
 
 @endphp
@@ -167,6 +167,12 @@ $admin=App\Models\User::find($id);
             </a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('messages.index') }}">
+              <i class="mdi mdi-newspaper menu-icon"></i>
+              <span class="menu-title">Messages</span>
+            </a>
+          </li>
          
 
       

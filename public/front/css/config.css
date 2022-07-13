@@ -1,0 +1,48 @@
+.container{
+    max-width: 1280px !important;
+    width: 100% !important;
+    margin: auto !important;
+}
+.row{
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+body{
+    font-family: 'Nunito', sans-serif;
+}
+button{
+    font-family: 'Nunito', sans-serif;
+}
+.logo-2{
+    display: none;
+}
+.col-lg-3{
+    width: 24%;
+}
+.col-lg-4{
+    width: 32%;
+}
+.col-lg-8{
+    width: 64%;
+}
+.col-lg-5{
+    width: 40%;
+}
+.col-lg-7{
+    width: 56%;
+}
+.col-lg-5{
+    width: 43% !important;
+}
+.col-lg-6{
+    width: 50%;
+}
+.col-lg-6-pr{
+    width: 49%;
+}
+.col-lg-7{
+    width: 57%;
+}
+.col-lg-4{
+    width: 32%;
+}

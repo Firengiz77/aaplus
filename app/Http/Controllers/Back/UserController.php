@@ -94,7 +94,7 @@ public function login(Request $request)
 
    public function admin_edit_all(Request $request)
    {
-       $id = auth()->guard('admin')->id();
+       $id = auth()->id();
        $data = User::find($id);
        $data->name = $request->name;
        $data->email = $request->email;
@@ -116,7 +116,7 @@ public function login(Request $request)
    public function admin_edit_password(Request $request)
    {
 
-       $id = auth()->guard('admin')->id();
+       $id = auth()->id();
 
        $hashedpassword = User::find($id)->password;
 
