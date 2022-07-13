@@ -17,8 +17,14 @@ class Admin_check
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::guard('admin')->check()){
-            return $next($request);
+        // if(Auth::guard('admin')->check()){
+        //     return $next($request);
+        // }
+
+        if(Auth::check()){
+            if(Auth::user()->admin_active ==1){
+                return $next($request);
+            }
         }
         return redirect()->route('admin.login');
     }

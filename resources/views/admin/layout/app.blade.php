@@ -20,6 +20,13 @@ $admin=App\Models\User::find($id);
 
 @endphp
 
+<style>
+.lang{
+  text-align:right;
+}
+
+</style>
+
     <div class="container-scroller">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
@@ -206,7 +213,7 @@ $admin=App\Models\User::find($id);
             <div class="nav-link">
               <div class="mt-4">
                 <ul class="mt-4 pl-0">
-                  <li>Sign Out</li>
+              <a href="{{ route('admin.logout') }}"  >  <li>Sign Out</li></a>
                 </ul>
               </div>
             </div>

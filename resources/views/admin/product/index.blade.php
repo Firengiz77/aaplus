@@ -9,8 +9,6 @@
 
 
 @endphp
-
-
 <div class="main-panel">        
     <div class="content-wrapper">
         <div class="page-header">
@@ -46,18 +44,13 @@
                                             <td class="py-1">
                                                 {!! json_decode($product['desc'])->{app()->getLocale()} !!}
                                             </td>
-
-                                            <td> 
                                             <td>
-                                       
                                                 <a href="{{ route('product.edit',$product->id) }}" class="btn btn-primary">
                                                     <i class="mdi mdi-grease-pencil"></i>
                                                 </a>
                                                 <a href="{{ route('delete-product',$product->id) }}" class="delete-confirm">
                                                     <button class="btn btn-danger"> <i class="mdi mdi-delete"></i></button>
                                                 </a>
-                                        
-                                            
                                             </td>
                                         </tr>
                                     @endforeach
@@ -68,16 +61,14 @@
                 </div>
             </div>
         </div>
+    </div>
 </div>
-</div>
-
 
  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
-
 $('.delete-confirm').on('click', function (event) {
     event.preventDefault();
     const url = $(this).attr('href');
@@ -92,8 +83,6 @@ $('.delete-confirm').on('click', function (event) {
         }
     });
 });
-
-
-    </script>
+</script>
 
 @endsection

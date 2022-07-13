@@ -39,7 +39,7 @@ public function login(Request $request)
 
 
  
-    if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]))
+    if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
     {
        toastr()->success('Giris Edildi');
        return redirect()->route('admin.index');
