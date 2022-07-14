@@ -75,6 +75,22 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="slug_az">Slug (az)</label>
+                    <input type="text"  class="form-control"  name="slug_az" value="{{ $projecttype->slug_az }}">
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="slug_en">Slug (en)</label>
+                    <input type="text"  class="form-control"  name="slug_en" value="{{ $projecttype->slug_en }}">
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="slug_ru">Slug (ru)</label>
+                    <input type="text"  class="form-control"  name="slug_ru" value="{{ $projecttype->slug_ru }}">
+                  </div>
+
+
+                  <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" name="image" class="form-control" id="image" >
                   </div>
@@ -122,6 +138,22 @@
                           <input type="hidden" name="name" value='{"az":"","en":"","ru":""}'>
                           <textarea required class="form-control" ></textarea>
                         </div>
+
+                        <div class="form-group">
+                          <label for="slug_az">Slug (az)</label>
+                          <input type="text"  class="form-control"  name="slug_az" >
+                        </div>
+      
+                        <div class="form-group ">
+                          <label for="slug_en">Slug (en)</label>
+                          <input type="text"  class="form-control"  name="slug_en" >
+                        </div>
+      
+                        <div class="form-group ">
+                          <label for="slug_ru">Slug (ru)</label>
+                          <input type="text"  class="form-control"  name="slug_ru" >
+                        </div>
+
 
                         <div class="form-group">
                           <label for="image">Image</label>

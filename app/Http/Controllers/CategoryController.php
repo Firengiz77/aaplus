@@ -35,7 +35,7 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id'=>'required',
-            'icon'=>'required|mimes:jpg,png,webp|max:200',
+            'icon'=>'nullable|mimes:jpg,png,webp|max:200',
         ]);
 
         if ($request->hasFile('icon')) {
@@ -104,7 +104,7 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id'=>'required',
-            'icon'=>'required|mimes:jpg,png,webp|max:200',
+            'icon'=>'nullable|mimes:jpg,png,webp|max:200',
         ]);
       
         $data['icon'] = $category->icon;

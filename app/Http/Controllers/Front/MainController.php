@@ -141,6 +141,7 @@ class MainController extends Controller
             'msj'=>'required',
             'surname'=>'required',
             'phone'=>'required',
+            'prefix'=>'required'
            
                 
         ]);
@@ -154,6 +155,7 @@ class MainController extends Controller
            'msj'=>$request->msj,
            'surname'=>$request->surname,
            'phone'=>$request->phone,
+           'prefix'=>$request->prefix
         ]; 
         Mail::send('front.sendmail', $array,  function ($message) use($email)  {
               $message->to( $email, 'A+A');

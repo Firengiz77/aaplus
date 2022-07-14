@@ -9,6 +9,7 @@
 <body>
     Ad : {{ $name }} <br>
     Soyad : {{ $surname }} <br>
+    Prefix : {{ $prefix }}   <br>
     Phone : {{ $phone }} <br>
     Email : {{ $email }} <br>
     Mesaj : {{ $msj }} <br>

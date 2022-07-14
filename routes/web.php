@@ -145,6 +145,11 @@ Route::get('/product/delete/{id}',[ProductController::class,'delete_product'])->
 
 // Messages routeler
 Route::get('/messages_index',[MessagesController::class,'index'])->name('messages.index');
+Route::get('/message/delete/{id}',[MessagesController::class,'delete_message'])->name('delete-message');
+
+
+
+
 
 });
 
@@ -194,7 +199,8 @@ Route::group([
   ], function(){ 
             Route::get('/', [MainController::class,'getPage'])->name('index');
             Route::get('/single', [MainController::class,'getSinglePage'])->name('single');
-            Route::get('{slug}/{project?}', [MainController::class,'getPage'])->name('single2');
+            Route::get('{slug}/{project?}/{id?}', [MainController::class,'getPage'])->name('project');
+            // Route::get('{slug}/{project?}', [MainController::class,'project'])->name('project');
 
 });
 

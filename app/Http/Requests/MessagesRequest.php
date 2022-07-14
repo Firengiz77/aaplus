@@ -29,6 +29,7 @@ class MessagesRequest extends FormRequest
             'phone'=>'required',
             'email'=>'required',
             'msj'=>'required',
+            'prefix'=>'required'
         ];
     }
 }

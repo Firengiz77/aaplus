@@ -80,8 +80,10 @@ class MessagesController extends Controller
      * @param  \App\Models\Messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Messages $messages)
+    public function delete_message($id)
     {
-        //
+        $messages = Messages::all()->find($id);
+        $messages->delete();
+        return redirect()->back();
     }
 }

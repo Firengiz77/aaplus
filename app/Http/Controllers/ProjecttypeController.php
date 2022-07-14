@@ -34,6 +34,9 @@ class ProjecttypeController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'image'=>'required|mimes:jpg,png,webp|max:200',
+            'slug_az'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
            
         ]);
         if ($request->hasFile('image')) {
@@ -43,6 +46,9 @@ class ProjecttypeController extends Controller
         Projecttype::create([
             'image' => $data['image'],
             'name' => $data['name'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
         ]);
         toastr()->success('Successfully Added!');
 
@@ -96,6 +102,9 @@ class ProjecttypeController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'image'=>'required|mimes:jpg,png,webp|max:200',
+            'slug_az'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
         ]);
 
         $data['image'] = $projecttype->image;
@@ -108,6 +117,9 @@ class ProjecttypeController extends Controller
         $projecttype->update([
             'name' => $data['name'],
             'image' => $data['image'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
         ]);
   
         toastr()->success('Successfully Updated!');

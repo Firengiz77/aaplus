@@ -158,6 +158,10 @@
     </section>
     <!--Infographic End-->
     
+    @php
+        $newss =  App\Models\News::orderBy('id','asc')->take(4)->get();
+        $slugnews = \App\Models\Page::where('route','news')->first();
+    @endphp
     <!--News Start-->
     <section id="news">
         <div class="container">
@@ -171,57 +175,36 @@
                     </h2>
                 </div>
                 <div class="news-images">
+                    @foreach ($newss as $news )
+                        
                     <div class="news-img">
-                        <a href="#">
-                            <img class="card-img" src="{{ asset('/front/img/news-1.png') }}" alt="">
+                        <a  @if(app()->getLocale() === 'az')
+                            href="/{{ $slugnews->slug_az }}"
+                            @elseif(app()->getLocale() === 'en')
+                            href="/en/{{ $slugnews->slug_en }}"
+                            @else
+                            href="/ru/{{ $slugnews->slug_ru }}"
+                            @endif>
+                            <img class="card-img" src="{{  (!empty($news->thumbnail)? url('uploads/news/'.$news->thumbnail):url('uploads/news/icon-admin.png')  )}}" alt="">
                             <div class="text">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate amet, et
-                                    nibh lorem eget dignissim. Scelerisque mauris egestas est....
+                                    {!! json_decode($news['title'])->{app()->getLocale()} !!}
                                     <img src="{{ asset('/front/img/Arrow 1.svg') }}" alt="">
                                 </p>
                             </div>
                         </a>
                     </div>
-                    <div class="news-img">
-                        <a href="#">
-                            <img class="card-img" src="{{ asset('/front/img/news-2.png') }}" alt="">
-                            <div class="text">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate amet, et
-                                    nibh lorem eget dignissim. Scelerisque mauris egestas est....
-                                    <img src="{{ asset('/front/img/Arrow 1.svg') }}" alt="">
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="news-img">
-                        <a href="#">
-                            <img class="card-img" src="{{ asset('/front/img/news-3.png') }}" alt="">
-                            <div class="text">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate amet, et
-                                    nibh lorem eget dignissim. Scelerisque mauris egestas est....
-                                    <img src="{{ asset('/front/img/Arrow 1.svg') }}" alt="">
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="news-img">
-                        <a href="#">
-                            <img class="card-img" src="{{ asset('/front/img/news-4.png') }}" alt="">
-                            <div class="text">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate amet, et
-                                    nibh lorem eget dignissim. Scelerisque mauris egestas est....
-                                    <img src="{{ asset('/front/img/Arrow 1.svg') }}" alt="">
-                                </p>
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
+
                 </div>
                 <div class="detail-div">
-                    <a class="detail" href="#">
+                    <a class="detail"  @if(app()->getLocale() === 'az')
+                        href="/{{ $slugnews->slug_az }}"
+                        @elseif(app()->getLocale() === 'en')
+                        href="/en/{{ $slugnews->slug_en }}"
+                        @else
+                        href="/ru/{{ $slugnews->slug_ru }}"
+                        @endif>
                         Ətraflı
                     </a>
                 </div>
@@ -232,6 +215,8 @@
 
     @php
         $projecttypes = App\Models\Projecttype::get();
+        $slug = \App\Models\Page::where('route','project')->first();
+        $slug2 = \App\Models\Page::where('route','projectall')->first();
     @endphp
 
 
@@ -250,9 +235,16 @@
                 </div>
                 <div class="projects">
                     @foreach ($projecttypes as $projecttype )
-                        
                     <div @if($projecttype->id %2 === 0)  data-aos="fade-up" @else  data-aos="fade-down" @endif data-aos-duration="1000" class="project-img">
-                        <a href="">
+                        <a 
+                       @if(app()->getLocale() === 'az')
+                       href="{{ route('project',['slug' => $slug->slug_az,'project'=> $projecttype->slug_az,'id'=>$projecttype->id ]) }}"
+                       @elseif(app()->getLocale() === 'en')
+                       href="{{ route('project',['slug' => $slug->slug_en,'project'=> $projecttype->slug_en,'id'=>$projecttype->id ]) }}"
+                       @else
+                       href="{{ route('project',['slug' => $slug->slug_ru,'project'=> $projecttype->slug_ru,'id'=>$projecttype->id ]) }}"
+                       @endif
+                        >
                             <img src="{{  (!empty($projecttype->image)? url('uploads/projecttype/'.$projecttype->image):url('uploads/projecttype/icon-admin.png')  )}}" alt="">
                             <div class="project-text">
                                 <p>
@@ -264,7 +256,14 @@
                     @endforeach
 
                     <div class="detail-div">
-                        <a class="detail" href="#">
+                        <a class="detail" 
+                        @if(app()->getLocale() === 'az')
+                        href="/{{ $slug2->slug_az }}"
+                        @elseif(app()->getLocale() === 'en')
+                        href="/en/{{ $slug->slug_en }}"
+                        @else
+                        href="/ru/{{ $slug->slug_ru }}"
+                        @endif>
                             Ətraflı
                         </a>
                     </div>

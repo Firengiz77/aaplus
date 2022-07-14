@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row">
                 <div class="logo">
-                    <a href="">
+                    <a href="{{ route('index') }}">
                         <img class="logo-1" src="{{ asset('/front/img/logo.svg') }}" alt="">
                         <img class="logo-2" src="{{ asset('/front/img/logo2.svg') }}" alt="">
                     </a>
@@ -125,134 +125,50 @@
                 <div class="products">
                     <div class="col-lg-5">
                         <ul class="nav-2">
-                            <li class="nav-item services">
+                            @php
+                                $categories = App\Models\Category::where('category_id',0)->get();
+                              
+                            @endphp
+
+                            @foreach ($categories as $category)
+                        
+
+
+                            <li class="nav-item  @if($category->id === 1) services @elseif($category->id === 2) wireless @elseif($category->id === 3) purpose @else program @endif  ">
                                 <a href="#">
-                                    Elektron təhlükəsizlik sistemləri
+                                    {!! json_decode($category['name'])->{app()->getLocale()} !!}
                                 </a>
                             </li>
-                            <li class="nav-item wireless">
-                                <a href="#">
-                                    Simsiz telemetriya
-                                </a>
-                            </li>
-                            <li class="nav-item purpose">
-                                <a href="#">
-                                    Məqsədli həllər
-                                </a>
-                            </li>
-                            <li class="nav-item program">
-                                <a href="#">
-                                    Proqramlaşdırma və avtomatlaşdırma
-                                </a>
-                            </li>
+
+
+                            @endforeach
+
+                          
+
                         </ul>
                     </div>
                     <div class="col-lg-7">
                         <img src="{{ asset('/front/img/stars.png') }}" alt="">
-                        <ul class="nav-ser">
+
+                        
+                        @foreach ($categories as $category)
+                        @php
+                        $category1 = App\Models\Category::where('category_id',$category->id)->get();
+                      @endphp
+                        <ul class=" @if($category->id === 1) nav-ser @elseif($category->id === 2) nav-wire @elseif($category->id === 3) nav-purpose @else nav-program @endif ">
+                            @foreach ($category1 as $c1 )
                             <li class="nav-item">
                                 <a href="#">
-                                    - Video müşahidə sistemləri,
+                                    {!! json_decode($c1['name'])->{app()->getLocale()} !!}
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Girişə və iş vaxtına nəzarət sistemləri,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Yanğın siqnalizasiya sistemləri,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Mühafizə xəbərdarlıq sistemləri,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Şlaqbaunlar, Turniketlər, Bollardlar və s,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Ödənişli və ödənişsiz dayanacaq sistemləri,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Şəbəkə avadanlığı
-                                </a>
-                            </li>
+                        @endforeach
+                   
+                       
+
+                            
                         </ul>
-                        <ul class="nav-wire">
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Nəqliyyat vasitələrinin Monitorinqi və İdarə olunması(GPS Monitoring)
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Mikroiqlimə nəzarət,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Piyada işçilərə nəzarət,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Güc-enerji, istehsalat və metrik avadanlığa nəzarət və idarəetmə,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Bankomatlar, ödəniş terminalları və satış aftomatlarına nəzarət və mühafizə
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-purpose">
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Otel kilidləri,seyfləri, minibarları, enerjini qənaət edən cihazlar və s,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Elektromexanik kilidlər, qapı dartıcılar, panik barlar, master key sistemləri,
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - X-ray avadanlıqları, çərçivə və əl metal detektolar
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - GYanacaq doldurma məntəqələrinə aid olan dispenserlar,nasoslar, yanacağın
-                                    səviyyəsini ölçən cihazlar,
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-program">
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Proqramlaşdırma
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - Biznesin Avtomatlaşdırılması
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">
-                                    - İOT
-                                </a>
-                            </li>
-                        </ul>
+                        @endforeach
                     </div>
                 </div>
 
@@ -271,7 +187,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <a href="">
+                    <a href="{{ route('index') }}">
                         <img src="{{ asset('/front/img/foot-logo.svg') }}" alt="">
                     </a>
                 </div>
@@ -280,50 +196,52 @@
                         A+A security
                     </h2>
                     <ul class="site-map">
-                        <li>
-                            <a href="#">
-                                Haqqımızda
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Məhsullar və həllər
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Layihələr
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Xəbərlər
-                            </a>
-                        </li>
+                        @foreach ($pagess as $pages)
+                        @if($pages['parent_id']==0)
+                           <li >
+                               <a
+                               @if(app()->getLocale() === 'az')
+                               href="@if($pages['page_id']==1){{ "/".$pages['slug']}}@else{{ "/".$pages['slug'] }}@endif"
+                               @else
+                               href="@if($pages['page_id']==1){{ "/".App::getLocale()."/".$pages['slug']}}@else{{ "/".App::getLocale()."/".$pages['slug'] }}@endif"
+                               @endif
+                               
+                               class="@if($pages['route']==$current_route || $pages['page_id']==$page_id) active @else  @endif"
+                               >
+                                 {{ $pages['page'] }}    </a>
+                              
+                           </li>
+                       @endif
+                   @endforeach
+
+                    
                     </ul>
                 </div>
+                @php
+                    $contact = App\Models\Contact::first();
+                @endphp
                 <div class="col-lg-3">
                     <h2 class="foot-head">
                         Əlaqə
                     </h2>
                     <ul class="contact">
                         <li>
-                            <a href="tel:+994124960056">
-                                (+994 12) 496-00-56
+                            <a href="tel:{{ str_replace(' ','',$contact->phone1) }}">
+                                {{ $contact->phone1 }}
                             </a>
                         </li>
                         <li>
-                            <a href="tel:+994502590505">
-                                (+994 50) 259-05-05
+                            <a href="tel:{{ str_replace(' ','',$contact->phone2) }}">
+                                {{ $contact->phone2 }}
                             </a>
                         </li>
                         <li>
-                            <a href="mailTo:sales@aplusa-security.com">
-                                sales@aplusa-security.com
+                            <a href="mailTo:{{ $contact->phone2 }}">
+                                {{ $contact->email }}
                             </a>
                         </li>
                         <li>
-                            Akhmad Bay Aga oglu 24B
+                            {{ $contact->address }}
                         </li>
                     </ul>
                 </div>
@@ -333,17 +251,17 @@
                     </h2>
                     <ul class="social-icons">
                         <li>
-                            <a href="#">
+                            <a href=" {{ $contact->fb }}">
                                 <img src="{{ asset('/front/img/facebook.svg') }}" alt="">
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href=" {{ $contact->insta }}">
                                 <img src="{{ asset('/front/img/instagram.svg') }}" alt="">
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ $contact->linkedin }}">
                                 <img src="{{ asset('/front/img/linkedin.svg') }}" alt="">
                             </a>
                         </li>

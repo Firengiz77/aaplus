@@ -44,13 +44,13 @@
                                 <input class="contact-input" type="text" name="name" placeholder="Ad">
                                 <input class="contact-input" type="text" name="surname" placeholder="Soyad">
                             </div>
-                            <select class="number-select">
-                                <option selected>050</option>
-                                <option value="1">051</option>
-                                <option value="2">055</option>
-                                <option value="3">099</option>
-                                <option value="4">070</option>
-                                <option value="4">077</option>
+                            <select class="number-select" name="prefix">
+                                <option value="050" >050</option>
+                                <option value="051">051</option>
+                                <option value="055">055</option>
+                                <option value="099">099</option>
+                                <option value="070">070</option>
+                                <option value="077">077</option>
                             </select>  
                             <input class="contact-input" name="phone" type="tel" placeholder="XXX – XX – XX" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}">           
                             <input class="contact-input" name="email" type="email" placeholder="E-Poçt">   

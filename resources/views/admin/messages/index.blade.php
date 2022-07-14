@@ -30,8 +30,10 @@
                                         <th>Name </th>
                                         <th>Surname</th>
                                         <th>Email</th>
+                                        <th>Prefix</th>
                                         <th>Phone</th>
                                         <th>Message</th>
+                                        <th>Action</th>
                                     
                                     </tr>
                                 </thead>
@@ -44,9 +46,13 @@
                                             </td>
                                             <td>{{ $message->surname }}</td>
                                             <td>{{ $message->email }}</td>
+                                            <td>{{ $message->prefix }}</td>
                                             <td>{{ $message->phone }}</td>
                                             <td>{{ $message->msj }}</td>
-
+                                          <td>
+                                            <a href="{{ route('delete-message',$message->id) }}" class="delete-confirm">
+                                               <button class="btn btn-danger"> <i class="mdi mdi-delete"></i></button>
+                                            </a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
