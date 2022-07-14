@@ -199,7 +199,7 @@ Route::group([
   ], function(){ 
             Route::get('/', [MainController::class,'getPage'])->name('index');
             Route::get('/single', [MainController::class,'getSinglePage'])->name('single');
-            Route::get('{slug}/{project?}/{id?}', [MainController::class,'getPage'])->name('project');
+            Route::get('{slug}/{project?}', [MainController::class,'getPage'])->name('project');
             // Route::get('{slug}/{project?}', [MainController::class,'project'])->name('project');
 
 });

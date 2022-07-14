@@ -6,19 +6,24 @@
 @php
 
 if(app()->getLocale() === 'az'){
-    $variable = request()->segment(3);
-    $variable2 = request()->segment(2);
-    $projects = App\Models\Project::where('project_type_id',$variable)->get();
-    $projects2 = App\Models\Project::where('project_type_id','!=',$variable)->get();
-    $projectsfirst = App\Models\Project::where('project_type_id',$variable)->first();
-    $projects2first = App\Models\Project::where('project_type_id','!=',$variable)->first();
+    $variable = request()->segment(2);
+    $variable2 = request()->segment(3);
+    $type = App\Models\Projecttype::where('slug_az',$variable)->orWhere('slug_en',$variable)->orWhere('slug_ru',$variable)->first();
+
+    $projects = App\Models\Project::where('project_type_id',$type->id)->get();
+    $projects2 = App\Models\Project::where('project_type_id','!=',$type->id)->get();
+    $projectsfirst = App\Models\Project::where('project_type_id',$type->id)->first();
+    $projects2first = App\Models\Project::where('project_type_id','!=',$type->id)->first();
   
 }
 else if(app()->getLocale() === 'en' || app()->getLocale() === 'ru'){
-    $variable =  request()->segment(4);
-    $variable2 = request()->segment(3);
-    $projects = App\Models\Project::where('project_type_id',$variable)->get();
-    $projects2 = App\Models\Project::where('project_type_id','!=',$variable)->get();
+    $variable =  request()->segment(3);
+    $variable2 = request()->segment(2);
+    $type = App\Models\Projecttype::where('slug_az',$variable)->orWhere('slug_en',$variable)->orWhere('slug_ru',$variable)->first();
+
+
+    $projects = App\Models\Project::where('project_type_id',$type->id)->get();
+    $projects2 = App\Models\Project::where('project_type_id','!=',$type->id)->get();
 }
 else{
      $variable =  request()->segment(4);

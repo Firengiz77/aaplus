@@ -238,11 +238,11 @@
                     <div @if($projecttype->id %2 === 0)  data-aos="fade-up" @else  data-aos="fade-down" @endif data-aos-duration="1000" class="project-img">
                         <a 
                        @if(app()->getLocale() === 'az')
-                       href="{{ route('project',['slug' => $slug->slug_az,'project'=> $projecttype->slug_az,'id'=>$projecttype->id ]) }}"
+                       href="{{ route('project',['slug' => $slug->slug_az,'project'=> $projecttype->slug_az]) }}"
                        @elseif(app()->getLocale() === 'en')
-                       href="{{ route('project',['slug' => $slug->slug_en,'project'=> $projecttype->slug_en,'id'=>$projecttype->id ]) }}"
+                       href="{{ route('project',['slug' => $slug->slug_en,'project'=> $projecttype->slug_en ]) }}"
                        @else
-                       href="{{ route('project',['slug' => $slug->slug_ru,'project'=> $projecttype->slug_ru,'id'=>$projecttype->id ]) }}"
+                       href="{{ route('project',['slug' => $slug->slug_ru,'project'=> $projecttype->slug_ru ]) }}"
                        @endif
                         >
                             <img src="{{  (!empty($projecttype->image)? url('uploads/projecttype/'.$projecttype->image):url('uploads/projecttype/icon-admin.png')  )}}" alt="">
