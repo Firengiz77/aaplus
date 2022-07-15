@@ -42,7 +42,6 @@
                                               0
                                               @else
                                               {!! json_decode($category['category']['name'])->{app()->getLocale()} !!}
-
                                            @endif
                                           </td>
                                           <td> <img class="card-img-top" style="border-radius:50%" src="{{  (!empty($category->icon)? url('uploads/category/'.$category->icon):url('uploads/category/icon-admin.png')  )}}" width="50px" height="50px"></td>
@@ -56,15 +55,15 @@
                                                   </button>
 
                                                   <!-- Modal -->
-<div class="modal fade" id="exampleModal_{{ $category->id }}" role="dialog" aria-labelledby="exampleModalLabel_{{ $category->id }}" >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel_{{ $category->id }}">Edit Category </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+              <div class="modal fade" id="exampleModal_{{ $category->id }}" role="dialog" aria-labelledby="exampleModalLabel_{{ $category->id }}" >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel_{{ $category->id }}">Edit Category </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
         <div class="modal-body">
             <div class="lang">
                 <a href="az" class="btn btn-success {{ app()->isLocale('az') ? 'active' : '' }}">Az</a>
@@ -93,6 +92,20 @@
                     <input type="hidden" name="name" value="{{ $category->name }}">
                     <textarea required class="form-control" >{!! json_decode($category['name'])->{app()->getLocale()} !!}</textarea>
                   </div>
+
+                  <div class="form-group ">
+                    <label for="slug_az">Slug (az)</label>
+                    <input type="text" name="slug_az" class="form-control" value="{{ $category->slug_az }}">
+                  </div>
+                  <div class="form-group ">
+                    <label for="slug_en">Slug (en)</label>
+                    <input type="text" name="slug_en" class="form-control" value="{{ $category->slug_en }}">
+                  </div>
+                  <div class="form-group ">
+                    <label for="slug_ru">Slug (ru)</label>
+                    <input type="text" name="slug_ru" class="form-control" value="{{ $category->slug_ru }}">
+                  </div>
+
 
                   <div class="form-group">
                     <label for="icon">Icon</label>
@@ -155,6 +168,18 @@
                           <label for="name">Name</label>
                           <input type="hidden" name="name" value='{"az":"","en":"","ru":""}'>
                           <textarea required class="form-control" ></textarea>
+                        </div>
+                        <div class="form-group ">
+                          <label for="slug_az">Slug (az)</label>
+                          <input type="text" name="slug_az" class="form-control" >
+                        </div>
+                        <div class="form-group ">
+                          <label for="slug_en">Slug (en)</label>
+                          <input type="text" name="slug_en" class="form-control" >
+                        </div>
+                        <div class="form-group ">
+                          <label for="slug_ru">Slug (ru)</label>
+                          <input type="text" name="slug_ru" class="form-control">
                         </div>
 
                         <div class="form-group">

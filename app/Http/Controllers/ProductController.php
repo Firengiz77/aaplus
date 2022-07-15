@@ -39,6 +39,10 @@ class ProductController extends Controller
             'name' => 'required',
             'desc' => 'required',
             'link'=>'nullable',
+            'slug_az'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
+            'title'=>'required',
             'category_id'=>'required',
             'images'=>'required|mimes:jpg,png,webp|max:200',
         ]);
@@ -57,6 +61,10 @@ class ProductController extends Controller
             'link' => $data['link'],
             'category_id' => $data['category_id'],
             'images' => $data['images'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
+            'title' => $data['title'],
         ]);
 
         toastr()->success('Successfully Added!');
@@ -116,6 +124,10 @@ class ProductController extends Controller
             'name' => 'required',
             'desc' => 'required',
             'link'=>'nullable',
+            'slug_az'=>'required',
+            'title'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
             'category_id'=>'required',
            // 'images'=>'required|mimes:jpg,png,webp|max:200',
         ]);
@@ -137,6 +149,10 @@ class ProductController extends Controller
             'link' => $data['link'],
             'category_id' => $data['category_id'],
             'images' => $data['images'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
+            'title' => $data['title'],
         ]);
         toastr()->success('Successfully Updated!');
 

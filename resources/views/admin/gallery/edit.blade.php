@@ -5,7 +5,9 @@
   
 @include('admin.layout.navbar')
 
-
+@php
+    $galleries = App\Models\Gallery::get();
+@endphp
 
 <div class="main-panel">        
     <div class="content-wrapper">
@@ -23,6 +25,21 @@
 
               <form class="forms-sample" method="post" action="{{route('gallery.update',[ 'id'=> $gallery->id ])}}" enctype="multipart/form-data">
                   @csrf
+
+                  <div class="form-group ">
+                    <div class="form-group">
+                        <label for="gallery_id">Select Category:</label>
+                        <select class="form-control"  name="gallery_id" id="gallery_id">
+                          <option value="0">NoThing</option>
+                          @foreach ($galleries as $type )
+                              
+                          <option value="{{ $type->id }}" @if($type->id == $gallery->gallery_id) selected @endif  >{!! json_decode($type['title'])->{app()->getLocale()} !!}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                  </div>
+
+
                   
                   <div class="form-group translate">
                     <label for="title">Title</label>
@@ -36,6 +53,22 @@
                     <label for="image">Image</label>
                     <input type="file" name="image" class="form-control" id="image" >
                   </div>
+
+                  <div class="form-group ">
+                    <label for="slug_az">Slug (az)</label>
+                    <input type="text" class="form-control" name="slug_az" value="{{ $gallery->slug_az }}" >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="slug_en">Slug (en)</label>
+                    <input type="text" class="form-control" name="slug_en" value="{{ $gallery->slug_az }}">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="slug_ru">Slug (ru)</label>
+                    <input type="text" class="form-control" name="slug_ru" value="{{ $gallery->slug_az }}">
+                  </div>
+
 
           
              {{-- image --}}

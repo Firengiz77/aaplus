@@ -37,6 +37,10 @@ class GalleryController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'image'=>'required|mimes:jpg,png,webp|max:200',
+            'gallery_id'=>'nullable',
+            'slug_az'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
       
         ]);
         if ($request->hasFile('image')) {
@@ -46,6 +50,10 @@ class GalleryController extends Controller
         Gallery::create([
             'title' => $data['title'],
             'image' => $data['image'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
+            'gallery_id' => $data['gallery_id'],
         ]);
 
         toastr()->success('Successfully Added!');
@@ -102,7 +110,11 @@ class GalleryController extends Controller
         $data = $request->all();
         $validator = Validator::make($request->all(), [
             'title' => 'required',
+            'gallery_id' => 'required',
             'image'=>'required|mimes:jpg,png,webp|max:200',
+            'slug_az'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
         ]);
       
         $data['image'] = $gallery->image;
@@ -115,6 +127,10 @@ class GalleryController extends Controller
         $gallery->update([
             'title' => $data['title'],
             'image' => $data['image'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
+            'gallery_id' => $data['gallery_id'],
         ]);
         toastr()->success('Successfully Updated!');
 

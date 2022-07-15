@@ -12,7 +12,13 @@ class Gallery extends Model
     protected $fillable = [
         'title',
         'image',
+        'gallery_id',
+        'slug_az',
+        'slug_en',
+        'slug_ru'
     ];
-
+        public function gallery(){
+            return $this->belongsTo('App\Models\Gallery','gallery_id');
+        }
 
 }

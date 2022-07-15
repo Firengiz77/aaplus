@@ -1,5 +1,13 @@
 @extends('front.layout.app')
+@php
+     $lang = App::getLocale();
+    $title2 = 'title_' . $lang;
+@endphp
+@section('title')
 
+<title>{{ $page->$title2 }}</title>
+
+@endsection
 
 @section('container')
 
@@ -24,6 +32,8 @@ else if(app()->getLocale() === 'en' || app()->getLocale() === 'ru'){
 
     $projects = App\Models\Project::where('project_type_id',$type->id)->get();
     $projects2 = App\Models\Project::where('project_type_id','!=',$type->id)->get();
+    $projectsfirst = App\Models\Project::where('project_type_id',$type->id)->first();
+    $projects2first = App\Models\Project::where('project_type_id','!=',$type->id)->first();
 }
 else{
      $variable =  request()->segment(4);
@@ -33,6 +43,11 @@ else{
 
 }
 $slug = App\Models\Page::where('route','contact')->first();
+$slug2 = App\Models\Page::where('route','projects')->first();
+
+     $home = App\Models\Page::where('route','index')->first();
+     $lang = App::getLocale();
+     $title = 'page_' . $lang;
 
 
 @endphp
@@ -41,11 +56,11 @@ $slug = App\Models\Page::where('route','contact')->first();
     <div class="pages container">
         <ul class="page-pagination">
             <li class="pag-item-head">
-                <a href="{{ route('index') }}">Ana səhifə</a>
+                <a href="{{ route('index') }}">{{ $home->$title }}</a>
             </li>
             <span><img src="{{ asset('/front/img/right-arrow.svg') }}" alt=""></span>
             <li class="pag-item">
-                Layihələr
+                {{ $slug2->$title }}
             </li>
         </ul>
     </div>

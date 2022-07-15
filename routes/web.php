@@ -200,12 +200,12 @@ Route::group([
             Route::get('/', [MainController::class,'getPage'])->name('index');
             Route::get('/single', [MainController::class,'getSinglePage'])->name('single');
             Route::get('{slug}/{project?}', [MainController::class,'getPage'])->name('project');
-            // Route::get('{slug}/{project?}', [MainController::class,'project'])->name('project');
+           Route::get('{slug2}/{project2?}/{project3?}', [MainController::class,'getPage'])->name('project2');
 
 });
 
 Route::post('/sendmail2', [MainController::class,'sendmail2'])->name('sendmail2');
-
+Route::get('search',[MainController::class, 'search']);
 
 
 

@@ -44,11 +44,29 @@
                     <input type="hidden" name="name" value="{{ $product->name }}">
                     <textarea required class="form-control" >{!! json_decode($product['name'])->{app()->getLocale()} !!}</textarea>
                   </div>
+                  <div class="form-group translate">
+                    <label for="title">Title</label>
+                    <input type="hidden" name="title" value="{{ $product->title }}">
+                    <textarea required class="form-control" >{!! json_decode($product['title'])->{app()->getLocale()} !!}</textarea>
+                  </div>
 
                   <div class="form-group translate">
                     <label for="desc">Description</label>
                     <input type="hidden" name="desc" value="{{ $product->desc }}">
                     <textarea required class="form-control" >{!! json_decode($product['desc'])->{app()->getLocale()} !!}</textarea>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="slug_az">Slug (az)</label>
+                    <input type="text" name="slug_az" class="form-control" value="{{ $product->slug_az }}">
+                  </div>
+                  <div class="form-group ">
+                    <label for="slug_en">Slug (en)</label>
+                    <input type="text" name="slug_en" class="form-control" value="{{ $product->slug_en }}">
+                  </div>
+                  <div class="form-group ">
+                    <label for="slug_ru">Slug (ru)</label>
+                    <input type="text" name="slug_ru" class="form-control" value="{{ $product->slug_ru }}">
                   </div>
 
                   <div class="form-group ">

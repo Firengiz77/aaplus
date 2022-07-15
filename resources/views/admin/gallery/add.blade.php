@@ -5,7 +5,9 @@
   
 @include('admin.layout.navbar')
 
-
+@php
+    $galleries = App\Models\Gallery::get();
+@endphp
 
 <div class="main-panel">        
     <div class="content-wrapper">
@@ -24,10 +26,39 @@
               <form class="forms-sample" method="POST" action="{{route('gallery.add')}}" enctype="multipart/form-data">
                   @csrf
                   
+                  <div class="form-group ">
+                    <div class="form-group">
+                        <label for="gallery_id">Select Gallery:</label>
+                        <select class="form-control"  name="gallery_id" id="gallery_id">
+                          <option value="0">NoThing</option>
+                          @foreach ($galleries as $type )
+                              
+                          <option value="{{ $type->id }}">{!! json_decode($type['title'])->{app()->getLocale()} !!}</option>   
+                           @endforeach
+                        </select>
+                      </div>
+                  </div>
+
+
                   <div class="form-group translate">
                     <label for="title">Title</label>
                     <input type="hidden" name="title" value='{"az":"","en":"","ru":""}'>
                     <textarea required class="form-control" ></textarea>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="slug_az">Slug (az)</label>
+                    <input type="text" class="form-control" name="slug_az" >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="slug_en">Slug (en)</label>
+                    <input type="text" class="form-control" name="slug_en" >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="slug_ru">Slug (ru)</label>
+                    <input type="text" class="form-control" name="slug_ru" >
                   </div>
 
                   <div class="form-group">

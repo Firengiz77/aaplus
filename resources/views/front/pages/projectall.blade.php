@@ -1,5 +1,14 @@
 @extends('front.layout.app')
+@php
+     $lang = App::getLocale();
+    $title2 = 'title_' . $lang;
+@endphp
 
+@section('title')
+
+<title>{{ $page->$title2 }}</title>
+
+@endsection
 
 @section('container')
 
@@ -10,17 +19,20 @@
      $projects2first = App\Models\Project::where('project_type_id',5)->first();
 
      $slug = App\Models\Page::where('route','contact')->first();
+     $home = App\Models\Page::where('route','index')->first();
+     $lang = App::getLocale();
+     $title = 'page_' . $lang;
 @endphp
 
     <!--Projects start-->
     <div class="pages container">
         <ul class="page-pagination">
             <li class="pag-item-head">
-                <a href="{{ route('index') }}">Ana səhifə</a>
+                <a href="{{ route('index') }}">{{ $home->$title }}</a>
             </li>
             <span><img src="{{ asset('/front/img/right-arrow.svg') }}" alt=""></span>
             <li class="pag-item">
-                Layihələr
+                {{ $slug->$title }}
             </li>
         </ul>
     </div>

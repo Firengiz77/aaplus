@@ -6,8 +6,6 @@
 @include('admin.layout.navbar')
 @php
     $counter = 0;
-
-
 @endphp
 
 
@@ -29,8 +27,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Gallery Id</th>
                                         <th>Title</th>
-                                        <th>Image 2</th>
+
+                                        <th>Image</th>
                                         <th>Action </th>
                                     </tr>
                                 </thead>
@@ -38,6 +38,13 @@
                                     @foreach ($galleries as $gallery)
                                         <tr>
                                             <td>{{ ++$counter }}</td>
+                                            <td>  
+                                             @if($gallery->gallery_id === '0')
+                                             0
+                                             @else
+                                             {!! json_decode($gallery['gallery']['title'])->{app()->getLocale()} !!}
+                                             @endif
+                                            </td>
                                             <td class="py-1">
                                                 
                                                 {!! json_decode($gallery['title'])->{app()->getLocale()} !!}

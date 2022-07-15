@@ -35,6 +35,9 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id'=>'required',
+            'slug_az'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
             'icon'=>'nullable|mimes:jpg,png,webp|max:200',
         ]);
 
@@ -48,6 +51,9 @@ class CategoryController extends Controller
             'name' => $data['name'],
             'category_id' => $data['category_id'],
             'icon' => $data['icon'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
         ]);
 
         toastr()->success('Successfully Added!');
@@ -104,6 +110,9 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id'=>'required',
+            'slug_az'=>'required',
+            'slug_en'=>'required',
+            'slug_ru'=>'required',
             'icon'=>'nullable|mimes:jpg,png,webp|max:200',
         ]);
       
@@ -118,6 +127,9 @@ class CategoryController extends Controller
             'name' => $data['name'],
             'category_id' => $data['category_id'],
             'icon' => $data['icon'],
+            'slug_az' => $data['slug_az'],
+            'slug_en' => $data['slug_en'],
+            'slug_ru' => $data['slug_ru'],
         ]);
         toastr()->success('Successfully Updated!');
 

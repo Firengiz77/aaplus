@@ -43,12 +43,32 @@
                     <input type="hidden" name="name" value='{"az":"","en":"","ru":""}'>
                     <textarea required class="form-control" ></textarea>
                   </div>
+                  
+                  <div class="form-group translate">
+                    <label for="title">Title</label>
+                    <input type="hidden" name="title" value='{"az":"","en":"","ru":""}'>
+                    <textarea required class="form-control" ></textarea>
+                  </div>
 
                   <div class="form-group translate">
                     <label for="desc">Description</label>
                     <input type="hidden" name="desc" value='{"az":"","en":"","ru":""}'>
                     <textarea required class="form-control" ></textarea>
                   </div>
+
+                  <div class="form-group ">
+                    <label for="slug_az">Slug (az)</label>
+                    <input type="text" name="slug_az" class="form-control" >
+                  </div>
+                  <div class="form-group ">
+                    <label for="slug_en">Slug (en)</label>
+                    <input type="text" name="slug_en" class="form-control" >
+                  </div>
+                  <div class="form-group ">
+                    <label for="slug_ru">Slug (ru)</label>
+                    <input type="text" name="slug_ru" class="form-control">
+                  </div>
+                  
 
                   <div class="form-group ">
                     <label for="link">Link (can be null)</label>

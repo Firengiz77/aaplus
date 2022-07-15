@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3307
--- Üretim Zamanı: 14 Tem 2022, 10:18:07
+-- Üretim Zamanı: 15 Tem 2022, 12:21:52
 -- Sunucu sürümü: 10.4.22-MariaDB
 -- PHP Sürümü: 8.1.1
 
@@ -30,6 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_az` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_ru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` bigint(255) DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -40,19 +43,11 @@ CREATE TABLE `categories` (
 -- Tablo döküm verisi `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `icon`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, '{\"az\":\"Elektron təhlükəsizlik sistemləri\",\"en\":\"Elektron təhlükəsizlik sistemləri\",\"ru\":\"Elektron təhlükəsizlik sistemləri\"}', '118535347_icon-1.png', 0, NULL, '2022-07-13 07:12:21'),
-(2, '{\"az\":\"Simsiz telemetriya\",\"en\":\"Simsiz telemetriya\",\"ru\":\"Simsiz telemetriya\"}', '245881478_icon-2.png', 0, '2022-07-08 02:37:55', '2022-07-13 07:12:15'),
-(3, '{\"az\":\"Məqsədli həllər\",\"en\":\"Məqsədli həllər\",\"ru\":\"Məqsədli həllər\"}', '91952404_icon-3.png', 0, '2022-07-08 02:42:25', '2022-07-13 07:11:31'),
-(4, '{\"az\":\"Proqramlaşdırma və avtomatlaşdırma\",\"en\":\"Proqramlaşdırma və avtomatlaşdırma\",\"ru\":\"Proqramlaşdırma və avtomatlaşdırma\"}', '85856917_icon-4.png', 0, '2022-07-08 02:42:32', '2022-07-13 07:12:32'),
-(5, '{\"az\":\"Video müşahidə sistemləri,\",\"en\":\"Video müşahidə sistemləri,\",\"ru\":\"Video müşahidə sistemləri,\"}', NULL, 1, '2022-07-08 02:42:55', '2022-07-08 02:42:55'),
-(6, '{\"az\":\"Girişə və iş vaxtına nəzarət sistemləri,\",\"en\":\"Girişə və iş vaxtına nəzarət sistemləri,\",\"ru\":\"Girişə və iş vaxtına nəzarət sistemləri,\"}', NULL, 1, '2022-07-08 02:43:05', '2022-07-08 02:43:05'),
-(7, '{\"az\":\"Yanğın siqnalizasiya sistemləri,\",\"en\":\"Yanğın siqnalizasiya sistemləri,\",\"ru\":\"Yanğın siqnalizasiya sistemləri,\"}', NULL, 1, '2022-07-08 02:43:13', '2022-07-08 02:43:13'),
-(8, '{\"az\":\"Mühafizə xəbərdarlıq sistemləri,\",\"en\":\"Mühafizə xəbərdarlıq sistemləri,\",\"ru\":\"Mühafizə xəbərdarlıq sistemləri,\"}', NULL, 1, '2022-07-08 02:43:20', '2022-07-08 02:43:20'),
-(9, '{\"az\":\"Şlaqbaunlar, Turniketlər, Bollardlar və s,\",\"en\":\"Şlaqbaunlar, Turniketlər, Bollardlar və s,\",\"ru\":\"Şlaqbaunlar, Turniketlər, Bollardlar və s,\"}', NULL, 1, '2022-07-08 02:43:27', '2022-07-08 02:43:27'),
-(10, '{\"az\":\"Ödənişli və ödənişsiz dayanacaq sistemləri,\",\"en\":\"Ödənişli və ödənişsiz dayanacaq sistemləri,\",\"ru\":\"Ödənişli və ödənişsiz dayanacaq sistemləri,\"}', NULL, 1, '2022-07-08 02:43:33', '2022-07-08 02:43:33'),
-(11, '{\"az\":\"Şəbəkə avadanlığı\",\"en\":\"Şəbəkə avadanlığı\",\"ru\":\"Şəbəkə avadanlığı\"}', NULL, 1, '2022-07-08 02:43:40', '2022-07-08 02:43:40'),
-(12, '{\"az\":\"test az\",\"en\":\"test en\",\"ru\":\"test ru\"}', '224059887_about-1.png', 2, '2022-07-14 03:50:09', '2022-07-14 03:50:09');
+INSERT INTO `categories` (`id`, `name`, `slug_az`, `slug_en`, `slug_ru`, `icon`, `category_id`, `created_at`, `updated_at`) VALUES
+(1, '{\"az\":\"Elektron təhlükəsizlik sistemləri\",\"en\":\"Elektron təhlükəsizlik sistemləri\",\"ru\":\"Elektron təhlükəsizlik sistemləri\"}', 'elektron_tehlukesizlik_sistemleri_az', 'elektron_tehlukesizlik_sistemleri_e', 'elektron_tehlukesizlik_sistemleri_ru', '118535347_icon-1.png', 0, NULL, '2022-07-15 03:35:45'),
+(2, '{\"az\":\"Simsiz telemetriya\",\"en\":\"Simsiz telemetriya\",\"ru\":\"Simsiz telemetriya\"}', 'simsiz_telemetriya_az', 'simsiz_telemetriya_en', 'simsiz_telemetriya_ru', '245881478_icon-2.png', 0, '2022-07-08 02:37:55', '2022-07-15 01:58:47'),
+(3, '{\"az\":\"Məqsədli həllər\",\"en\":\"Məqsədli həllər\",\"ru\":\"Məqsədli həllər\"}', 'meqsedli_heller_az', 'meqsedli_heller_en', 'meqsedli_heller_ru', '91952404_icon-3.png', 0, '2022-07-08 02:42:25', '2022-07-15 01:59:02'),
+(4, '{\"az\":\"Proqramlaşdırma və avtomatlaşdırma\",\"en\":\"Proqramlaşdırma və avtomatlaşdırma\",\"ru\":\"Proqramlaşdırma və avtomatlaşdırma\"}', 'proqramlasdirma_az', 'proqramlasdirma_en', 'proqramlasdirma_ru', '85856917_icon-4.png', 0, '2022-07-08 02:42:32', '2022-07-15 01:59:17');
 
 -- --------------------------------------------------------
 
@@ -148,17 +143,24 @@ CREATE TABLE `galleries` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_az` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_ru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `gallery_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Tablo döküm verisi `galleries`
 --
 
-INSERT INTO `galleries` (`id`, `title`, `image`, `created_at`, `updated_at`) VALUES
-(5, '{\"az\":\"sdfgdfg\",\"en\":\"sdfsdf\",\"ru\":\"dfgbdfgb\"}', '534343284_geo_travel_blue_logo.png', '2022-07-07 01:01:52', '2022-07-07 01:01:52'),
-(7, '{\"az\":\"fbxdfgb\",\"en\":\"dfgbdf\",\"ru\":\"dfgbdfgb\"}', '433101935_Rectangle-23.jpg', '2022-07-07 01:02:11', '2022-07-07 01:02:11');
+INSERT INTO `galleries` (`id`, `title`, `image`, `slug_az`, `slug_en`, `slug_ru`, `created_at`, `updated_at`, `gallery_id`) VALUES
+(8, '{\"az\":\"Gallery 1 title az\",\"en\":\"Gallery 1 title en\",\"ru\":\"Gallery 1 title ru\"}', '1479523075_news-slide-3.png', 'gallery_1_az', 'gallery_1_en', 'gallery_1_ru', '2022-07-15 00:54:20', '2022-07-15 01:32:28', '0'),
+(9, '{\"az\":\"Gallery 2 title 2 az\",\"en\":\"Gallery 2 title 2 en\",\"ru\":\"Gallery 2 title 2 ru\"}', '565561470_news-slide-2.png', 'gallery_2_az', 'gallery_2_en', 'gallery_2_ru', '2022-07-15 00:55:36', '2022-07-15 02:43:31', '0'),
+(10, '{\"az\":\"Gallery 1 sub gallery title 1\",\"en\":\"Gallery 1 sub gallery title 1 en\",\"ru\":\"Gallery 1 sub gallery title 1 ru\"}', '533918512_about-1.png', 'gallery_1_1_az', 'gallery_1_1_az', 'gallery_1_1_az', '2022-07-15 00:56:07', '2022-07-15 01:33:49', '8'),
+(11, '{\"az\":\"Gallery 2 sub gallery title 1\",\"en\":\"Gallery 2 sub gallery title 1 en\",\"ru\":\"Gallery 2 sub gallery title 1 ru\"}', '638978794_about-2.png', 'gallery_2_1_az', 'gallery_2_1_az', 'gallery_2_1_az', '2022-07-15 00:56:32', '2022-07-15 01:33:45', '9'),
+(12, '{\"az\":\"Gallery 1.2 title 1 az\",\"en\":\"Gallery 1.2 title 1 en\",\"ru\":\"Gallery 1.2 title 1 ru\"}', '1338511084_gallery-img2.png', 'gallery_1_2_az', 'gallery_1_2_en', 'gallery_1_2_en', '2022-07-15 01:17:58', '2022-07-15 01:33:30', '8');
 
 -- --------------------------------------------------------
 
@@ -236,7 +238,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2022_07_08_045009_create_projects_table', 13),
 (20, '2022_07_08_062210_create_categories_table', 14),
 (21, '2022_07_08_071222_create_products_table', 15),
-(22, '2022_07_13_131506_create_messages_table', 16);
+(22, '2022_07_13_131506_create_messages_table', 16),
+(23, '2022_07_15_044301_add_column_to_galleries_table', 17);
 
 -- --------------------------------------------------------
 
@@ -300,14 +303,16 @@ CREATE TABLE `pages` (
 
 INSERT INTO `pages` (`id`, `page_en`, `page_ru`, `page_az`, `slug_en`, `slug_ru`, `slug_az`, `title_en`, `title_ru`, `title_az`, `description_en`, `description_ru`, `description_az`, `keywords_en`, `keywords_ru`, `keywords_az`, `viewname`, `route`, `page_id`, `parent_id`, `created_at`, `updated_at`, `on_off`) VALUES
 (6, 'Home Page', 'Home Page ru', 'Esas Sehife', '/', '/', '/', 'Home Page', 'Home Page ru', 'Əsas Səhifə', 'Home Page', 'Home Page ru', 'Əsas Səhifə', 'Home Page', 'Home Page ru', 'Əsas Səhifə', 'index', 'index', '1', '0', '2022-07-07 03:18:36', '2022-07-13 07:57:39', '0'),
-(10, 'About us', 'About us ru', 'Haqqimizda', 'about-us', 'about-us-ru', 'haqqimizda', 'Home Page', 'About us ru', 'Home Page', 'rfth', 'dtdrt', 'hbhjb', 'drth', 'dth', 'drt', 'about_us', 'about', '2', '0', '2022-07-13 07:58:16', '2022-07-14 03:19:30', '1'),
-(11, 'Gallery', 'Gallery ru', 'Qalereya', 'gallery', 'gallery_ru', 'qalereya', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'gallery', 'gallery', '3', '10', '2022-07-13 08:00:17', '2022-07-13 08:00:17', '1'),
+(10, 'About us', 'About us ru', 'Haqqimizda', 'about-us', 'about-us-ru', 'haqqimizda', 'Haqqimizda en', 'Haaqimizda ru', 'Haqqimizda', 'rfth', 'dtdrt', 'hbhjb', 'drth', 'dth', 'drt', 'about_us', 'about', '2', '0', '2022-07-13 07:58:16', '2022-07-15 06:16:20', '1'),
+(11, 'Gallery', 'Gallery ru', 'Qalereya', 'galleries', 'galleries_ru', 'qalereyalar', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'Gallery', 'galleries', 'galleries', '3', '10', '2022-07-13 08:00:17', '2022-07-15 00:59:42', '1'),
 (12, 'About us', 'About us', 'Sirket Haqqinda', 'about-us', 'about-us-ru', 'sirket-haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'Sirket Haqqinda', 'about_us', 'about_us', '4', '10', '2022-07-13 08:04:40', '2022-07-13 08:04:40', '1'),
 (13, 'Mehsullar ve heller', 'Mehsullar ve heller', 'Mehsullar ve heller', 'mehsullar-ve-heller-en', 'mehsullar-ve-heller-ru', 'mehsullar-ve-heller', 'mehsullar-ve-heller', 'mehsullar-ve-heller', 'mehsullar-ve-heller', 'mehsullar-ve-heller', 'Projects', 'mehsullar-ve-heller', 'Projects', 'Projects', 'Projects', 'mehsullarveheller', 'mehsullarveheller', '5', '0', '2022-07-13 08:05:57', '2022-07-13 08:06:53', '1'),
-(14, 'Projects', 'Работает', 'Layihələr', 'projects', 'projects', 'layiheler', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'projectall', 'projectall', '5', '0', '2022-07-13 08:07:51', '2022-07-14 02:06:37', '1'),
+(14, 'Projects', 'Работает', 'Layihələr', 'projects', 'projects_ru', 'layiheler', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'Layihələr', 'projectall', 'projectall', '5', '0', '2022-07-13 08:07:51', '2022-07-15 02:42:33', '1'),
 (15, 'News', 'News', 'Xeberler', 'news', 'news-ru', 'xeberler', 'News', 'News', 'News', 'News', 'News', 'News', 'News', 'News', 'News', 'news', 'news', '6', '0', '2022-07-13 08:08:41', '2022-07-13 08:08:41', '1'),
 (16, 'Contact', 'Contact ru', 'Elaqe', 'contact', 'o-nas', 'elaqe', 'Contact', 'Contact', 'Contact', 'Contact', 'Contact', 'Contact', 'Contact', 'Contact', 'Contact', 'contact', 'contact', '7', '0', '2022-07-13 08:09:27', '2022-07-13 08:09:27', '1'),
-(17, 'Project', 'Project', 'Layihe', 'project', 'project_ru', 'layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'projects', 'project', '7', '0', '2022-07-14 02:07:37', '2022-07-14 02:08:28', '0');
+(17, 'Project', 'Project', 'Layihe', 'project', 'project_ru', 'layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'Layihe', 'projects', 'project', '7', '0', '2022-07-14 02:07:37', '2022-07-14 02:08:28', '0'),
+(18, 'Qaleriya', 'Qaleriya', 'Qaleriya', 'gallery', 'gallery', 'qalereya', 'Qaleriya', 'Qaleriya', 'Qaleriya', 'Qaleriya', 'Qaleriya', 'Qaleriya', 'Qaleriya', 'Qaleriya', 'Qaleriya', 'gallery', 'gallery', '11', '0', '2022-07-15 01:20:21', '2022-07-15 01:20:21', '0'),
+(19, 'Search', 'Search', 'Search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', 'search', '19', '0', '2022-07-15 04:28:29', '2022-07-15 04:28:41', '0');
 
 -- --------------------------------------------------------
 
@@ -375,9 +380,13 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug_az` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_ru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -387,9 +396,10 @@ CREATE TABLE `products` (
 -- Tablo döküm verisi `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `desc`, `images`, `link`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, '{\"az\":\"fghj\",\"en\":\"ghjdf\",\"ru\":\"hj\"}', '{\"az\":\"ghj\",\"en\":\"ghjdf\",\"ru\":\"k,hjk\"}', '[\"1261298963_11.jpg\",\"1302557627_13.jpg\"]', NULL, '5', '2022-07-08 03:46:26', '2022-07-08 03:53:47'),
-(2, '{\"az\":\"cfghn\",\"en\":\"gh\",\"ru\":\"cfg\"}', '{\"az\":\"cfgh\",\"en\":\"fcgh\",\"ru\":\"hnchn\"}', '[\"970950276_photo-1591448764624-d7973a442bff.jpg\",\"160226337_izmir-1-(1).jpg\",\"426221018_cappadocia.jpg\",\"1362191655_antalya-turkey-1800x1000.jpg\"]', NULL, '6', '2022-07-08 03:54:30', '2022-07-08 03:54:30');
+INSERT INTO `products` (`id`, `name`, `title`, `desc`, `images`, `link`, `slug_az`, `slug_en`, `slug_ru`, `category_id`, `created_at`, `updated_at`) VALUES
+(3, '{\"az\":\"Video müşahidə sistemləri,\",\"en\":\"Video müşahidə sistemləri en\",\"ru\":\"Video müşahidə sistemləri ru\"}', '{\"az\":\"VİDEO KAMERA ALLROUND DUAL M25 az\",\"en\":\"VİDEO KAMERA ALLROUND DUAL M25 en\",\"ru\":\"VİDEO KAMERA ALLROUND DUAL M25 ru\"}', '{\"az\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum. az\",\"en\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum. en\",\"ru\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictumru\"}', '[\"2119455824_about-1.png\",\"1502319500_about-2.png\",\"1930165239_about-img-1.png\",\"931895571_about-img-2.png\"]', NULL, 'video_musahide_sistemleri_az', 'video_musahide_sistemleri_en', 'video_musahide_sistemleri_ru', '1', '2022-07-15 02:08:02', '2022-07-15 02:21:36'),
+(4, '{\"az\":\"Girişə və iş vaxtına nəzarət sistemləri,\",\"en\":\"Girişə və iş vaxtına nəzarət sistemləri,\",\"ru\":\"Girişə və iş vaxtına nəzarət sistemləri,\"}', '{\"az\":\"VİDEO KAMERA ALLROUND DUAL M25  title az\",\"en\":\"VİDEO KAMERA ALLROUND DUAL M25 title en\",\"ru\":\"VİDEO KAMERA ALLROUND DUAL M25 title  ru\"}', '{\"az\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum. az\",\"en\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum. en\",\"ru\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum. ru\"}', '[\"1976510808_gallery-img1.png\",\"936900902_gallery-img2.png\"]', 'link', 'girise_nezaret_az', 'girise_nezaret_en', 'girise_nezaret_ru', '1', '2022-07-15 02:08:22', '2022-07-15 02:24:43'),
+(5, '{\"az\":\"test az\",\"en\":\"test az en\",\"ru\":\"test az ru\"}', '{\"az\":\"test az title\",\"en\":\"test az  en title\",\"ru\":\"test az ru title\"}', '{\"az\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum.\",\"en\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum.\",\"ru\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum fames sapien lectus urna aliquam pretium, imperdiet imperdiet. Gravida imperdiet enim sit at ac at purus elementum est. Ipsum ut nisl urna pretium. Est fringilla vulputate consequat enim id dictum.\"}', '[\"1380936240_project-1.png\",\"1501211223_project--1.png\",\"1966063662_project-2.png\"]', NULL, 'test_az', 'test_en', 'test_ru', '2', '2022-07-15 02:08:57', '2022-07-15 02:22:51');
 
 -- --------------------------------------------------------
 
@@ -757,7 +767,7 @@ ALTER TABLE `failed_jobs`
 -- Tablo için AUTO_INCREMENT değeri `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `languages`
@@ -775,7 +785,7 @@ ALTER TABLE `messages`
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `news`
@@ -787,7 +797,7 @@ ALTER TABLE `news`
 -- Tablo için AUTO_INCREMENT değeri `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `partners`
@@ -805,7 +815,7 @@ ALTER TABLE `personal_access_tokens`
 -- Tablo için AUTO_INCREMENT değeri `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `projects`

@@ -27,7 +27,7 @@
                                         <th>#</th>
                                         <th>Category Name</th>
                                         <th>Name</th>
-                                        <th>Description </th>
+                                        <th>Title </th>
                                         <th>Action </th>
                                     </tr>
                                 </thead>
@@ -42,7 +42,7 @@
                                                 {!! json_decode($product['name'])->{app()->getLocale()} !!}
                                             </td>
                                             <td class="py-1">
-                                                {!! json_decode($product['desc'])->{app()->getLocale()} !!}
+                                                {!! json_decode($product['title'])->{app()->getLocale()} !!}
                                             </td>
                                             <td>
                                                 <a href="{{ route('product.edit',$product->id) }}" class="btn btn-primary">

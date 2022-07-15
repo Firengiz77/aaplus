@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('/front/css/swiper.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/owl.carousel.min.css') }}">
 
-    <title>A+A</title>
+    @yield('title')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap"
@@ -50,11 +50,10 @@
                     </a>
                 </div>
                 <ul class="nav">
-
                     @foreach ($pagess as $pages)
                     @if($pages['parent_id']==0)
                        <li class="nav-item">
-                           <a
+                           <a @if($pages['route']=='mehsullarveheller') onclick="return:false;" @endif
                            @if(app()->getLocale() === 'az')
                            href="@if($pages['page_id']==1){{ "/".$pages['slug']}}@else{{ "/".$pages['slug'] }}@endif"
                            @else
@@ -67,32 +66,75 @@
                           
                        </li>
                    @endif
-               @endforeach
-
-                   
-                  
-                  
-
+                   @endforeach
 
                 </ul>
+            
+                @if($page->route !=='search')
                 <div class="lang-src">
-                    <a href="#">
-                        İng
-                    </a>
+
+                    @if(Route::is('index'))
+                    @if(app()->getLocale() === 'az')
+                    <a href="/en">İng</a>
                     <span>\</span>
-                    <a href="#">
-                        Rus
-                    </a>
+                    <a href="/ru">Rus</a>
+                    @elseif(app()->getLocale() === 'en')
+                    <a href="/">Aze</a>
+                    <span>\</span>
+                    <a href="/ru">Rus</a>
+                    @else
+                    <a href="/en">İng</a>
+                    <span>\</span>
+                    <a href="/">Aze</a>
+                    @endif
+
+                    @else
+                    @php
+                    if(app()->getLocale() === 'az'){
+                      $gallvariable =  request()->segment(2);
+                      $provariable = request()->segment(3);
+                     }
+                     else {
+                     $gallvariable =  request()->segment(3);
+                     $provariable = request()->segment(4);
+                   }
+                     $gallery = App\Models\Gallery::where('slug_az',$gallvariable)->orWhere('slug_en',$gallvariable)->orWhere('slug_ru',$gallvariable)->get();
+                     $types = App\Models\Projecttype::where('slug_az',$gallvariable)->orWhere('slug_en',$gallvariable)->orWhere('slug_ru',$gallvariable)->get();
+                     $categories =  App\Models\Category::where('slug_az',$gallvariable)->orWhere('slug_en',$gallvariable)->orWhere('slug_ru',$gallvariable)->get();
+                     $products = App\Models\Product::where('slug_az',$provariable)->orWhere('slug_en',$provariable)->orWhere('slug_ru',$provariable)->get();
+                  @endphp
+
+                    @if(app()->getLocale() === 'az')
+                    <a href="/en/{{$page->slug_en}}@if($page->route=='gallery')@foreach($gallery as $gal)@if($gal->slug_en){{'/'.$gal->slug_en}}@endif @endforeach @elseif($page->route=='project')@foreach($types as $type)@if($type->slug_en){{'/'.$type->slug_en}}@endif @endforeach @elseif($page->route=='mehsullarveheller')@foreach($categories as $category)@foreach($products as $product)@if($category->slug_en){{'/'.$category->slug_en}}@if($product->slug_en){{'/'.$product->slug_en}}@endif @endif @endforeach @endforeach @endif">Ing</a>
+                    <span>\</span>
+                    <a href="/ru/{{$page->slug_ru}}@if($page->route=='gallery')@foreach($gallery as $gal)@if($gal->slug_ru){{'/'.$gal->slug_ru}}@endif @endforeach @elseif($page->route=='project')@foreach($types as $type)@if($type->slug_ru){{'/'.$type->slug_ru}}@endif @endforeach @elseif($page->route=='mehsullarveheller')@foreach($categories as $category)@foreach($products as $product)@if($category->slug_ru){{'/'.$category->slug_ru}}@if($product->slug_ru){{'/'.$product->slug_ru}}@endif @endif @endforeach @endforeach @endif">Rus</a>
+                    @elseif(app()->getLocale() === 'en')
+                    <a href="/{{$page->slug_az}}@if($page->route=='gallery')@foreach($gallery as $gal)@if($gal->slug_az){{'/'.$gal->slug_az}}@endif @endforeach @elseif($page->route=='project')@foreach($types as $type)@if($type->slug_az){{'/'.$type->slug_az}}@endif @endforeach @elseif($page->route=='mehsullarveheller')@foreach($categories as $category)@foreach($products as $product)@if($category->slug_az){{'/'.$category->slug_az}}@if($product->slug_az){{'/'.$product->slug_az}}@endif @endif @endforeach @endforeach @endif">Aze</a>
+                    <span>\</span>
+                    <a href="/ru/{{$page->slug_ru}}@if($page->route=='gallery')@foreach($gallery as $gal)@if($gal->slug_ru){{'/'.$gal->slug_ru}}@endif @endforeach @elseif($page->route=='project')@foreach($types as $type)@if($type->slug_ru){{'/'.$type->slug_ru}}@endif @endforeach @elseif($page->route=='mehsullarveheller')@foreach($categories as $category)@foreach($products as $product)@if($category->slug_ru){{'/'.$category->slug_ru}}@if($product->slug_ru){{'/'.$product->slug_ru}}@endif @endif @endforeach @endforeach @endif">Rus</a>
+                    @else
+                    <a href="/en/{{$page->slug_en}}@if($page->route=='gallery')@foreach($gallery as $gal)@if($gal->slug_en){{'/'.$gal->slug_en}}@endif @endforeach @elseif($page->route=='project')@foreach($types as $type)@if($type->slug_en){{'/'.$type->slug_en}}@endif @endforeach @elseif($page->route=='mehsullarveheller')@foreach($categories as $category)@foreach($products as $product)@if($category->slug_en){{'/'.$category->slug_en}}@if($product->slug_en){{'/'.$product->slug_en}}@endif @endif @endforeach @endforeach @endif">Ing</a>
+                    <span>\</span>
+                    <a href="/{{$page->slug_az}}@if($page->route=='gallery')@foreach($gallery as $gal)@if($gal->slug_az){{'/'.$gal->slug_az}}@endif @endforeach @elseif($page->route=='project')@foreach($types as $type)@if($type->slug_az){{'/'.$type->slug_az}}@endif @endforeach @elseif($page->route=='mehsullarveheller')@foreach($categories as $category)@foreach($products as $product)@if($category->slug_az){{'/'.$category->slug_az}}@if($product->slug_az){{'/'.$product->slug_az}}@endif @endif @endforeach @endforeach @endif">Aze</a>
+                    @endif
+
+                    @endif
+
                     <button class="open-src">
                         <img src="{{ asset('/front/img/search.svg') }}" alt="">
                     </button>
                 </div>
-                <div class="search-input">
-                    <input class="search" placeholder="Məhsulları axtarış edə bilərsiniz" type="text">
-                    <button class="close-src">
+             @endif
+             
+                  
+                <form method="get" type="get" action="{{url('/search')}}"  class="search-input">
+                  @csrf
+                    <input class="search" name="search_field" placeholder="Məhsulları axtarış edə bilərsiniz" type="text">
+                    <button type="submit" class="close-src">
                         <img src="{{ asset('/front/img/close.svg') }}" alt="">
                     </button>
-                </div>
+                </form>
+           
                 <div class="about">
                     <div class="col-lg-5">
                       
@@ -149,18 +191,26 @@
                     </div>
                     <div class="col-lg-7">
                         <img src="{{ asset('/front/img/stars.png') }}" alt="">
-
-                        
                         @foreach ($categories as $category)
                         @php
-                        $category1 = App\Models\Category::where('category_id',$category->id)->get();
+                        $products = App\Models\Product::where('category_id',$category->id)->get();
+                        $slug2= App\Models\Page::where('route','mehsullarveheller')->first();
+                      
                       @endphp
                         <ul class=" @if($category->id === 1) nav-ser @elseif($category->id === 2) nav-wire @elseif($category->id === 3) nav-purpose @else nav-program @endif ">
-                            @foreach ($category1 as $c1 )
+                            @foreach ($products as $product )
                             <li class="nav-item">
-                                <a href="#">
-                                    {!! json_decode($c1['name'])->{app()->getLocale()} !!}
-                                </a>
+                                <a
+                                @if(app()->getLocale() === 'az')
+                                href="{{ route('project2',['slug2' => $slug2->slug_az,'project2'=> $category->slug_az,'project3' => $product->slug_az ]).'#'.$product->slug_az }}"
+                                @elseif(app()->getLocale() === 'en')
+                                href="{{ route('project2',['slug2' => $slug2->slug_en,'project2'=> $category->slug_en,'project3' => $product->slug_en ]).'#'.$product->slug_en }}"
+                                @else
+                                href="{{ route('project2',['slug2' => $slug2->slug_ru,'project2'=> $category->slug_ru,'project3' => $product->slug_ru ]).'#'.$product->slug_ru }}"
+                                @endif
+                                >
+                                    {!! json_decode($product['name'])->{app()->getLocale()} !!}
+                                </a> 
                             </li>
                         @endforeach
                    
@@ -280,6 +330,9 @@
         </div>
     </footer>
     <!--Footer End-->
+
+
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="

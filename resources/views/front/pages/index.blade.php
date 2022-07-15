@@ -1,4 +1,13 @@
 @extends('front.layout.app')
+@php
+     $lang = App::getLocale();
+    $title2 = 'title_' . $lang;
+@endphp
+@section('title')
+
+<title>{{ $page->$title2 }}</title>
+
+@endsection
 
 @section('container')
 
@@ -275,6 +284,7 @@
 
     @php
         $partners = \App\Models\Partner::get();
+        $contactslug = \App\Models\Page::where('route','contact')->first();
     @endphp
     <!--Partners Start-->
     <section id="partners">
@@ -323,9 +333,20 @@
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1519.3435931730787!2d49.8551929103577!3d40.39362507173783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6b94818acf%3A0x5318508b8a339b23!2sA%2BA%20Group%20Of%20Companies!5e0!3m2!1str!2s!4v1656929985662!5m2!1str!2s"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <button class="map-btn">
-                        Bizimlə Əlaqə
-                    </button>
+                        <a 
+                        @if(app()->getLocale() === 'az')
+                        href="/{{ $contactslug->slug_az }}"
+                        @elseif(app()->getLocale() === 'en')
+                        href="/en/{{ $contactslug->slug_en }}"
+                         
+                        @else
+                        href="/ru/{{ $contactslug->slug_ru }}"
+                         @endif
+                         >
+                             <button class="map-btn">
+                                 Bizimlə Əlaqə
+                             </button>
+                         </a>
                 </div>
             </div>
         </div>
