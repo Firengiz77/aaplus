@@ -65,22 +65,18 @@ return [
     'home2'=>'Biz, fiziki şəxslərdən və kiçik müəssisələrdən tutmuş dövlət idarələri və iri
     korporasiyalara qədər, geniş müştəri dairəsi ilə əməkdaşlıq edirik.',
     'home3'=>'Missiyamız müştərilərimizə ən keyfiyyətli və sərfəli xidmət göstərməkdən ibarətdir.',
-'more'=>'Ətraflı',
-'products'=>'Məhsullar və həllər',
-'block'=>'İnfoqrafiq blok',
-'news'=>'Yeni Xəbərlər',
-'project'=>'Layiheler',
-'address'=>'Ünvan',
-'contact_us'=>'Bizimlə Əlaqə',
+            'more'=>'Ətraflı',
+            'products'=>'Məhsullar və həllər',
+            'block'=>'İnfoqrafiq blok',
+            'news'=>'Yeni Xəbərlər',
+            'project'=>'Layiheler',
+            'address'=>'Ünvan',
+            'contact_us'=>'Bizimlə Əlaqə',
 
 
 // mehsullar single
 'kecid'=>'Keçid edin',
 'video'=>'Videomüşahidə',
-
-
-
-
 
 
 
