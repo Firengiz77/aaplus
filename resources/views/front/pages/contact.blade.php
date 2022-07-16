@@ -45,18 +45,18 @@
                     <div class="col-lg-6-pr">
                         <div class="head-text-div">
                             <h1 class="back-head-text">
-                                Əlaqə
+                                {{   __('static.footer1') }}
                             </h1>
                             <h2 class="head-text">
-                                Əlaqə
+                                {{   __('static.footer1') }}
                             </h2>
                         </div>
                         <div class="form-group">
                             <form action="{{ route('sendmail2') }}" method="post">
                                 @csrf
                             <div class="head-inputs">
-                                <input class="contact-input" type="text" name="name" placeholder="Ad">
-                                <input class="contact-input" type="text" name="surname" placeholder="Soyad">
+                                <input class="contact-input" type="text" name="name" placeholder="{{   __('static.ad') }}">
+                                <input class="contact-input" type="text" name="surname" placeholder="{{   __('static.soyad') }}">
                             </div>
                             <select class="number-select" name="prefix">
                                 <option value="050" >050</option>
@@ -67,12 +67,12 @@
                                 <option value="077">077</option>
                             </select>  
                             <input class="contact-input" name="phone" type="tel" placeholder="XXX – XX – XX" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}">           
-                            <input class="contact-input" name="email" type="email" placeholder="E-Poçt">   
-                            <textarea class="contact-input" name="msj" name="" id="" cols="30" rows="10" placeholder="Müraciətinizi daxil edin"></textarea>                    
+                            <input class="contact-input" name="email" type="email" placeholder=" {{   __('static.email') }}">   
+                            <textarea class="contact-input" name="msj" name="" id="" cols="30" rows="10" placeholder="  {{   __('static.msj') }}"></textarea>                    
                         </div>
                       
                             <button class="send-btn">
-                                Göndər
+                                {{   __('static.send') }}
                             </button>
                         </form>
                     </div>

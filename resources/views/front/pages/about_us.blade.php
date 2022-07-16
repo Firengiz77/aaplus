@@ -39,10 +39,10 @@
 <section id="about-page">
     <div class="head-text-div">
         <h1 class="back-head-text">
-            Haqqında məlumat
+            {{ __('static.about1')}}
         </h1>
         <h2 class="head-text">
-            Şirkət haqqında məlumat
+            {{ __('static.about2')}}
         </h2>
     </div>
     <div class="video wrapper">
@@ -56,20 +56,11 @@
             <div class="about-block">
                 <div data-aos="fade-right" data-aos-duration="1000" class="col-lg-6">
                     <p class="about-text">
-                        "A + A Security" MMC şirkəti tikinti və xidmətlər bazarında əhəmiyyətli mövqe tutan
-                        şaxələndirilmiş A + A Şirkətlər Qrupunun törəmə müəssisəsidir. Şirkət 2001-ci ildə
-                        fəaliyyətə başlayıb və bu gün elektron təhlükəsizlik kilidi, GPS monitorinqi, simsiz
-                        telemetriya və elektron təhlükəsizlik sistemləri kimi sahələrdə böyük təcrübəyə malikdir.
-                        A+A Security LLc həmçinin otellər və biznes mərkəzləri üçün otel kilidləri, minibarlar və
-                        seyf qutularının təchizatçısıdır.
+                       {!! __('static.about3')  !!}
                     </p>
                     <br>
                     <p class="about-text">
-                        Təklif olunan GPS monitorinq xidmətləri şirkəti İsrailin Pointer Telocation şirkəti
-                        tərəfindən real vaxt rejimində işləyən radionaviqasiya avadanlığından istifadə edir. Biz
-                        banklar, tikinti şirkətləri, yerli və beynəlxalq yükdaşımaları ilə məşğul olan şirkətlər,
-                        ictimai nəqliyyatla əlaqəli şirkətlər, paylayıcı şirkətlər, lizinq şirkətləri və ölkə
-                        iqtisadiyyatında mühüm rol oynayan şirkətlərlə əməkdaşlıq edirik.
+                        {!! __('static.about4')  !!}
                     </p>
                 </div>
                 <div data-aos="fade-left" data-aos-duration="1000" class="col-lg-6">
@@ -88,37 +79,28 @@
                 </div>
                 <div data-aos="fade-left" data-aos-duration="1000" class="col-lg-6">
                     <p class="about-text">
-                        Müasir dövrdə elektron təhlükəsizlik sistemləri mühüm tələbdir. A+A Security MMC-nin
-                        fəaliyyət spektrinə həmçinin Avropa və Cənubi Koreyada istehsal olunan perimetr
-                        mühafizəsi və müşahidə sistemi avadanlıqları daxildir. A + A Security MMC Almaniyanın
-                        yüksək ayırdetməli IP kameralar istehsalçısı Mobotix şirkətinin Azərbaycandakı
-                        nümayəndəsidir.
+                        {!! __('static.about5')  !!}
                     </p>
                     <br>
                     <p class="about-text">
-                        Şirkətimiz Norveçin VingCard şirkətinin ölkədə mehmanxana elektron qıfıllarının,
-                        qənaətcil enerjiyə qənaət sistemlərinin, həmçinin seyflərin və minibarların təchizatı
-                        ilə məşğul olan rəsmi nümayəndəsidir.
+                        {!! __('static.about6')  !!}
                     </p>
                     <br>
                     <p class="about-text">
-                        Biz müxtəlif müştərilərlə əməkdaşlıq edirik: fiziki şəxslərdən və kiçik bizneslərdən
-                        tutmuş dövlət qurumlarına və böyük korporasiyalara qədər. Missiyamız müştərilərimizə
-                        keyfiyyətli və səmərəli xidmətlər təqdim etməkdir.
+                        {!! __('static.about7')  !!}
                     </p>
                     <br>
                     <p class="about-text">
-                        Ən böyük sərvətimiz - işçilərimiz, öz işini sevən peşəkarlardan ibarət komandamız.
-                        Uğurumuzu müştərilərimizin məmnuniyyəti ilə ölçürük.
+                        {!! __('static.about8')  !!}
                     </p>
                 </div>
             </div>
             <div class="head-text-div certificate">
                 <h1 class="back-head-text">
-                    Sertifikatlar
+                    {!! __('static.sertificat')  !!}
                 </h1>
                 <h2 class="head-text">
-                    Sertifikatlar
+                    {!! __('static.sertificat')  !!}
                 </h2>
             </div>
             <div class="owl-carousel owl-theme certificate-slider">
@@ -135,35 +117,34 @@
             </div>
             <div class="head-text-div ">
                 <h1 class="back-head-text">
-                    Logonun istifadə qaydaları
+                    {!! __('static.logo')  !!}
                 </h1>
                 <h2 class="head-text">
-                    Logonun istifadə qaydaları
+                    {!! __('static.logo')  !!}
                 </h2>
             </div>
             <div class="logo-rules">
                 <p class="rules-head">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat aliquam viverra viverra lacus,
-                    nec aliquam in tincidunt ut. Ac mi at ridiculus posuere. Eros, nunc, arcu accumsan, non, amet at
+                    {!! __('static.logo1')  !!}
                 </p>
                 <ul class="rules-list">
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        {!! __('static.logo2')  !!}
                     </li>
                     <li>
-                        Tortor fringilla venenatis vitae placerat mattis sit arcu molestie.
+                        {!! __('static.logo3')  !!}
                     </li>
                     <li>
-                        Egestas nunc sed aenean egestas elementum, eu, donec.
+                        {!! __('static.logo4')  !!}
                     </li>
                     <li>
-                        Commodo sit leo et aliquet porta eget volutpat dis tellus.
+                        {!! __('static.logo5')  !!}
                     </li>
                     <li>
-                        Porta nibh a, risus etiam non, pretium amet, quis.
+                        {!! __('static.logo6')  !!}
                     </li>
                     <li>
-                        In sapien, ut dolor, eu suspendisse est, massa lectus in.
+                        {!! __('static.logo7')  !!}
                     </li>
                 </ul>
             </div>
@@ -190,10 +171,10 @@
             </div>
             <div class="head-text-div">
                 <h1 class="back-head-text">
-                    Partnyor Şirkətlər
+                    {!! __('static.partner1')  !!}
                 </h1>
                 <h2 class="head-text">
-                    Partnyor Şirkətlər qrupu
+                    {!! __('static.partner2')  !!}
                 </h2>
             </div>
         </div>

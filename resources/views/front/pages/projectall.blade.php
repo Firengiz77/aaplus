@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="project-card-text">
                                     <p class="type-text">
-                                        Videomüşahidə
+                                        {{   __('static.video') }}
                                     </p>
                                     <h2 class="project-head-text">
                                         {!! json_decode($project['title'])->{app()->getLocale()} !!}
@@ -89,7 +89,7 @@
                          @endif
                          >
                              <button class="contact-btn">
-                                 Bizimlə Əlaqə
+                                {{   __('static.contact_us') }}
                              </button>
                          </a>
                     </div>
@@ -115,7 +115,7 @@
                                         </div>
                                         <div class="project-card-text">
                                             <p class="type-text">
-                                                Videomüşahidə
+                                                {{   __('static.video') }}
                                             </p>
                                             <h2 class="project-head-text">
                                                 {!! json_decode($project2['title'])->{app()->getLocale()} !!}
@@ -141,7 +141,7 @@
                                  @endif
                                  >
                                      <button class="contact-btn">
-                                         Bizimlə Əlaqə
+                                        {{   __('static.contact_us') }}
                                      </button>
                                  </a>
                                  

@@ -47,26 +47,34 @@
                 <div class="col-lg-5">
                     <div data-aos="fade-left" data-aos-duration="1000" class="head-text-div">
                         <h1 class="back-head-text">
-                            Haqqında məlumat
+                            {{   __('static.about1') }}
                         </h1>
                         <h2 class="head-text">
-                            Şirkət haqqında məlumat
+                            {{   __('static.about2') }}
                         </h2>
                     </div>
                     <div data-aos="fade-left" data-aos-duration="1000" class="body-text">
                         <p>
-                            Elektron Təhlükəsizlik, Kilidləmə, GPS Monitoring, Naqilsiz Telemetriya və Elektron İdarə
-                            Etmə Sistemləri sahəsində böyük təcrübəyə malik olan distribyutor və inteqratordur.
+                            {{   __('static.home1') }}
                         </p>
                         <p>
-                            Biz, fiziki şəxslərdən və kiçik müəssisələrdən tutmuş dövlət idarələri və iri
-                            korporasiyalara qədər, geniş müştəri dairəsi ilə əməkdaşlıq edirik.
+                            {{   __('static.home2') }}
                         </p>
                         <p>
-                            Missiyamız müştərilərimizə ən keyfiyyətli və sərfəli xidmət göstərməkdən ibarətdir.
+                            {{   __('static.home3') }}
                         </p>
-                        <a class="detail" href="#">
-                            Ətraflı
+                        @php
+                            $slug = App\Models\Page::where('route','about_us')->first();
+                        @endphp
+                        <a class="detail" 
+                        @if(app()->getLocale() === 'az')
+                        href='/{{$slug->slug_az}}'
+                        @else
+                        href="/en/{{$slug->slug_en}}"
+                        @endif
+
+                        >
+                            {{   __('static.more') }}
                         </a>
                     </div>
                 </div>
@@ -86,10 +94,10 @@
             <div class="row">
                 <div class="head-text-div">
                     <h1 class="back-head-text">
-                        Məhsullar və həllər
+                        {{   __('static.products') }}
                     </h1>
                     <h2 class="head-text">
-                        Məhsullar və həllər
+                        {{   __('static.products') }}
                     </h2>
                 </div>
 
@@ -138,10 +146,10 @@
         <div class="row">
             <div class="head-text-div">
                 <h1 class="back-head-text">
-                    İnfoqrafiq blok
+                    {{   __('static.block') }}
                 </h1>
                 <h2 class="head-text">
-                    İnfoqrafiq blok
+                    {{   __('static.block') }}
                 </h2>
             </div>
         </div>
@@ -177,10 +185,10 @@
             <div class="row">
                 <div class="head-text-div">
                     <h1 class="back-head-text">
-                        Yeni Xəbərlər
+                        {{   __('static.news') }}
                     </h1>
                     <h2 class="head-text">
-                        Yeni Xəbərlər
+                        {{   __('static.news') }}
                     </h2>
                 </div>
                 <div class="news-images">
@@ -214,7 +222,7 @@
                         @else
                         href="/ru/{{ $slugnews->slug_ru }}"
                         @endif>
-                        Ətraflı
+                        {{   __('static.more') }}
                     </a>
                 </div>
             </div>
@@ -236,10 +244,10 @@
             <div class="row">
                 <div class="head-text-div">
                     <h1 class="back-head-text">
-                        Layihələr
+                        {{   __('static.project') }}
                     </h1>
                     <h2 class="head-text">
-                        Layihələr
+                        {{   __('static.project') }}
                     </h2>
                 </div>
                 <div class="projects">
@@ -273,7 +281,7 @@
                         @else
                         href="/ru/{{ $slug->slug_ru }}"
                         @endif>
-                            Ətraflı
+                        {{   __('static.more') }}
                         </a>
                     </div>
                 </div>
@@ -292,10 +300,10 @@
             <div class="row">
                 <div class="head-text-div">
                     <h1 class="back-head-text">
-                        Partnyor Şirkətlər
+                        {{   __('static.partner1') }}
                     </h1>
                     <h2 class="head-text">
-                        Partnyor Şirkətlər qrupu
+                        {{   __('static.partner2') }}
                     </h2>
                 </div>
                 <div class="swiper swiper-container mySwiper partners">
@@ -322,10 +330,10 @@
             <div class="row">
                 <div class="head-text-div">
                     <h1 class="back-head-text">
-                        Ünvan
+                        {{   __('static.address') }}
                     </h1>
                     <h2 class="head-text">
-                        Ünvan
+                        {{   __('static.address') }}
                     </h2>
                 </div>
                 <div class="map">
@@ -344,7 +352,7 @@
                          @endif
                          >
                              <button class="map-btn">
-                                 Bizimlə Əlaqə
+                                {{   __('static.contact_us') }}
                              </button>
                          </a>
                 </div>

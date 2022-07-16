@@ -129,7 +129,7 @@
                   
                 <form method="get" type="get" action="{{url('/search')}}"  class="search-input">
                   @csrf
-                    <input class="search" name="search_field" placeholder="Məhsulları axtarış edə bilərsiniz" type="text">
+                    <input class="search" name="search_field" placeholder="{{ __('static.search')}}" type="text">
                     <button type="submit" class="close-src">
                         <img src="{{ asset('/front/img/close.svg') }}" alt="">
                     </button>
@@ -243,7 +243,7 @@
                 </div>
                 <div class="col-lg-3">
                     <h2 class="foot-head">
-                        A+A security
+                        {{ __('static.footer1')}}
                     </h2>
                     <ul class="site-map">
                         @foreach ($pagess as $pages)
@@ -272,7 +272,7 @@
                 @endphp
                 <div class="col-lg-3">
                     <h2 class="foot-head">
-                        Əlaqə
+                        {{ __('static.footer2')}}
                     </h2>
                     <ul class="contact">
                         <li>
@@ -297,7 +297,7 @@
                 </div>
                 <div class="col-lg-3">
                     <h2 class="foot-head">
-                        Abunəlik
+                        {{ __('static.footer3')}}
                     </h2>
                     <ul class="social-icons">
                         <li>
@@ -323,7 +323,7 @@
             <div class="container">
                 <div class="row">
                     <p>
-                        (c) 2022 A+A Security, Bütün Hüquqlar Qorunur
+                        (c)     {{ __('static.footer4')}}
                     </p>
                 </div>
             </div>

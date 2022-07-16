@@ -39,10 +39,10 @@
         <div class="row">
             <div class="head-text-div">
                 <h1 class="back-head-text">
-                    Qalereya
+                    {{   __('static.gallery') }}
                 </h1>
                 <h2 class="head-text">
-                    Qalereya
+                    {{   __('static.gallery') }}
                 </h2>
             </div>
             <div class="gallery">
