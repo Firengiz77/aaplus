@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="{{ asset('/front/css/swiper.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/owl.carousel.min.css') }}">
 
+
     @yield('title')
+    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap"
@@ -129,7 +132,7 @@
                   
                 <form method="get" type="get" action="{{url('/search')}}"  class="search-input">
                   @csrf
-                    <input class="search" name="search_field" placeholder="Məhsulları axtarış edə bilərsiniz" type="text">
+                    <input class="search" name="search_field" placeholder="{{ __('static.search') }}" type="text">
                     <button type="submit" class="close-src">
                         <img src="{{ asset('/front/img/close.svg') }}" alt="">
                     </button>
@@ -174,8 +177,6 @@
 
                             @foreach ($categories as $category)
                         
-
-
                             <li class="nav-item  @if($category->id === 1) services @elseif($category->id === 2) wireless @elseif($category->id === 3) purpose @else program @endif  ">
                                 <a href="#">
                                     {!! json_decode($category['name'])->{app()->getLocale()} !!}
@@ -243,7 +244,7 @@
                 </div>
                 <div class="col-lg-3">
                     <h2 class="foot-head">
-                        A+A security
+                       {{ __('static.footer1')}}
                     </h2>
                     <ul class="site-map">
                         @foreach ($pagess as $pages)
@@ -257,14 +258,12 @@
                                @endif
                                
                                class="@if($pages['route']==$current_route || $pages['page_id']==$page_id) active @else  @endif"
-                               >
-                                 {{ $pages['page'] }}    </a>
+                               > {{ $pages['page'] }} </a>
                               
                            </li>
                        @endif
                    @endforeach
 
-                    
                     </ul>
                 </div>
                 @php
@@ -272,7 +271,7 @@
                 @endphp
                 <div class="col-lg-3">
                     <h2 class="foot-head">
-                        Əlaqə
+                        {{ __('static.footer2')}}
                     </h2>
                     <ul class="contact">
                         <li>
@@ -297,7 +296,7 @@
                 </div>
                 <div class="col-lg-3">
                     <h2 class="foot-head">
-                        Abunəlik
+                        {{ __('static.footer3') }}
                     </h2>
                     <ul class="social-icons">
                         <li>
@@ -323,7 +322,7 @@
             <div class="container">
                 <div class="row">
                     <p>
-                        (c) 2022 A+A Security, Bütün Hüquqlar Qorunur
+                        (c) {{ __('static.footer4')}}
                     </p>
                 </div>
             </div>
@@ -347,6 +346,7 @@
     <script src="{{ asset('/front/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('/front/js/slider.js') }}"></script>
     <script src="{{ asset('/front/js/main.js') }}"></script>
+    
 </body>
 
 </html>

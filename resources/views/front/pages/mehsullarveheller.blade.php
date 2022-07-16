@@ -83,7 +83,7 @@
                             @if($product->link !== null)
                             <a href="{{ $product->link }}">
                                 <button class="card-btn">
-                                    Keçid edin
+                                   {{ __('static.kecid')}}
                                 </button>
                             </a>
                             @endif
@@ -104,7 +104,7 @@
                          @endif
                          >
                              <button class="contact-btn">
-                                 Bizimlə Əlaqə
+                                {{ __('static.contact_us')}}
                              </button>
                          </a>
                     </div>
