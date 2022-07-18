@@ -230,6 +230,13 @@
 
     @yield('container')
 
+    @php
+        $slug1 =  App\Models\Page::where('route','mehsullarveheller')->first();
+    
+        $catslug = App\Models\Category::where('category_id',0)->first();
+        $slug2 = App\Models\Product::where('category_id',$catslug->id)->first();
+    @endphp
+
 
 
        <!--Footer Start-->
@@ -250,10 +257,20 @@
                         @if($pages['parent_id']==0)
                            <li >
                                <a
+                               @if(!($pages['route'] === 'mehsullarveheller'))
                                @if(app()->getLocale() === 'az')
                                href="@if($pages['page_id']==1){{ "/".$pages['slug']}}@else{{ "/".$pages['slug'] }}@endif"
                                @else
                                href="@if($pages['page_id']==1){{ "/".App::getLocale()."/".$pages['slug']}}@else{{ "/".App::getLocale()."/".$pages['slug'] }}@endif"
+                               @endif
+                               @else
+                               @if(app()->getLocale() === 'az')
+                               href="/{{ $slug1->slug_az }}/{{ $catslug->slug_az }}/{{ $slug2->slug_az }}"
+                               @elseif(app()->getLocale() === 'en')
+                               href="/en/{{ $slug1->slug_en }}/{{ $catslug->slug_en }}/{{ $slug2->slug_en }}"
+                               @else
+                               href="/ru/{{ $slug1->slug_ru }}/{{ $catslug->slug_ru }}/{{ $slug2->slug_ru }}"
+                               @endif
                                @endif
                                
                                class="@if($pages['route']==$current_route || $pages['page_id']==$page_id) active @else  @endif"
@@ -286,7 +303,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="mailTo:{{ $contact->phone2 }}">
+                            <a href="mailto:{{ $contact->email }}">
                                 {{ $contact->email }}
                             </a>
                         </li>

@@ -16,6 +16,7 @@
     $home = App\Models\Page::where('route','index')->first();
     $lang = App::getLocale();
     $title = 'page_' . $lang;
+    $slug2 = App\Models\Page::where('route','contact')->first();
 @endphp
 
 @section('title')
@@ -95,12 +96,11 @@
                     <div class="product-button">
                         <a 
                         @if(app()->getLocale() === 'az')
-                        href="/{{ $slug->slug_az }}"
+                        href="/{{ $slug2->slug_az }}"
                         @elseif(app()->getLocale() === 'en')
-                        href="/en/{{ $slug->slug_en }}"
-                         
+                        href="/en/{{ $slug2->slug_en }}"
                         @else
-                        href="/ru/{{ $slug->slug_ru }}"
+                        href="/ru/{{ $slug2->slug_ru }}"
                          @endif
                          >
                              <button class="contact-btn">
