@@ -37,6 +37,11 @@ class SliderController extends Controller
             'title' => 'required',
             'desc' => 'required',
             'image'=>'required|mimes:jpg,png,webp|max:200',
+            'font_size_1'=>'required',
+            'font_size_2'=>'required',
+            'color'=>'required',
+            'font_weight_2'=>'required',
+            'font_weight_1'=>'required',
       
         ]);
         if ($request->hasFile('image')) {
@@ -47,6 +52,11 @@ class SliderController extends Controller
             'title' => $data['title'],
             'desc' => $data['desc'],
             'image' => $data['image'],
+            'font_size_1' => $data['font_size_1'],
+            'font_size_2' => $data['font_size_2'],
+            'color' => $data['color'],
+            'font_weight_1' => $data['font_weight_2'],
+            'font_weight_1' => $data['font_weight_1'],
         ]);
 
         toastr()->success('Successfully Added!');
@@ -104,6 +114,11 @@ class SliderController extends Controller
             'title' => 'required',
             'desc' => 'required',
             'image'=>'required|mimes:jpg,png,webp|max:200',
+            'font_size_1'=>'required',
+            'font_size_2'=>'required',
+            'color'=>'required',
+            'font_weight_2'=>'required',
+            'font_weight_1'=>'required',
         ]);
       
         $data['image'] = $slider->image;
@@ -117,6 +132,11 @@ class SliderController extends Controller
             'title' => $data['title'],
             'desc' => $data['desc'],
             'image' => $data['image'],
+            'font_size_1' => $data['font_size_1'],
+            'font_size_2' => $data['font_size_2'],
+            'color' => $data['color'],
+            'font_weight_1' => $data['font_weight_1'],
+            'font_weight_2' => $data['font_weight_2'],
         ]);
         toastr()->success('Successfully Updated!');
 

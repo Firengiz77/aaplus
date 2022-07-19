@@ -31,12 +31,39 @@
                     <textarea required class="form-control" ></textarea>
                   </div>
 
+                  <div class="form-group">
+                    <label for="title">Font Size</label>
+                    <input type="text"  class="form-control" name="font_size_1">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="title">Font Weight</label>
+                    <input type="text"  class="form-control" name="font_weight_1">
+                  </div>
+              
+              
+
                   <div class="form-group translate">
                     <label for="desc">Description</label>
                     <input type="hidden" name="desc" value='{"az":"","en":"","ru":""}'>
                     <textarea required class="form-control" ></textarea>
                   </div>
 
+                  <div class="form-group">
+                    <label for="title">Font Size</label>
+                    <input type="text"  class="form-control" name="font_size_2">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="title">Font Weight</label>
+                    <input type="text"  class="form-control" name="font_weight_2">
+                  </div>
+              
+       
+                  <div class="form-group">
+                    <label for="title"> Color </label>
+                    <input type="text"  class="form-control" name="color">
+                  </div>
 
                   <div class="form-group">
                     <label for="image">Image</label>

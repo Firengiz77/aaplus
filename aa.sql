@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3307
--- Üretim Zamanı: 15 Tem 2022, 12:21:52
+-- Üretim Zamanı: 19 Tem 2022, 14:02:45
 -- Sunucu sürümü: 10.4.22-MariaDB
 -- PHP Sürümü: 8.1.1
 
@@ -239,7 +239,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2022_07_08_062210_create_categories_table', 14),
 (21, '2022_07_08_071222_create_products_table', 15),
 (22, '2022_07_13_131506_create_messages_table', 16),
-(23, '2022_07_15_044301_add_column_to_galleries_table', 17);
+(23, '2022_07_15_044301_add_column_to_galleries_table', 17),
+(24, '2022_07_19_100417_add_column_to_slider_table', 18);
 
 -- --------------------------------------------------------
 
@@ -533,18 +534,24 @@ CREATE TABLE `sliders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `font_size_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `font_weight_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `font_weight_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `font_size_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Tablo döküm verisi `sliders`
 --
 
-INSERT INTO `sliders` (`id`, `title`, `desc`, `image`, `created_at`, `updated_at`) VALUES
-(5, '{\"az\":\"Title 1\",\"en\":\"Title 1 en\",\"ru\":\"Title 1 ru\"}', '{\"az\":\"desc 1\",\"en\":\"desc 1 en\",\"ru\":\"desc 1 ru\"}', '1235695937_slide-3.png', '2022-07-07 01:03:14', '2022-07-13 06:43:50'),
-(6, '{\"az\":\"Title 2\",\"en\":\"Title 2 en\",\"ru\":\"Title 2 ru\"}', '{\"az\":\"Desc 2\",\"en\":\"Desc 2 en\",\"ru\":\"Desc 2 ru\"}', '637437661_slide-2.png', '2022-07-13 06:44:23', '2022-07-13 06:44:23');
+INSERT INTO `sliders` (`id`, `title`, `desc`, `desc_2`, `image`, `created_at`, `updated_at`, `font_size_1`, `color`, `font_weight_1`, `font_weight_2`, `font_size_2`) VALUES
+(5, '{\"az\":\"Title 1\",\"en\":\"Title 1 en\",\"ru\":\"Title 1 ru\"}', '{\"az\":\"Duzgun Muhafize\\n</br>\\nRahat Yasam\",\"en\":\"Duzgun Muhafize\\n</br>\\nRahat Yasam\",\"ru\":\"Duzgun Muhafize\"}', NULL, '1562743326_a1.jpg', '2022-07-07 01:03:14', '2022-07-19 06:35:03', '50', 'white', '700', '400', '35'),
+(6, '{\"az\":\"Title 2\",\"en\":\"Title 2 en\",\"ru\":\"Title 2 ru\"}', '{\"az\":\"Desc 2\",\"en\":\"Desc 2 en\",\"ru\":\"Desc 2 ru\"}', NULL, '950086162_a2.jpg', '2022-07-13 06:44:23', '2022-07-19 06:30:16', '50', 'black', '400', '400', '35');
 
 -- --------------------------------------------------------
 
@@ -785,7 +792,7 @@ ALTER TABLE `messages`
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `news`

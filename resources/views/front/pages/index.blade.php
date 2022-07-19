@@ -25,12 +25,37 @@
 @foreach ($sliders as $slider )
                 <div class="swiper-slide">
                     <img src="{{  (!empty($slider->image)? url('uploads/slider/'.$slider->image):url('uploads/slider/icon-admin.png')  )}}" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <h1 class="slider-head" style="font-weight: {{ $slider->font_weight_1 }}; font-size: {{ $slider->font_size_1 }}px;">
+                                {!! json_decode($slider['title'])->{app()->getLocale()} !!}
+                            </h1>
+                            <p class="slider-body" style="font-weight: {{ $slider->font_weight_2 }}; font-size: {{ $slider->font_size_1 }}px; color: {{ $slider->color }};">
+                                {!! json_decode($slider['desc'])->{app()->getLocale()} !!}
+                            </p>
+                            {{-- <p class="slider-body" style="font-weight: 400; font-size: 35px; color: #ffffff;">
+                                Rahat yaşam
+                            </p> --}}
+                        </div>
+                    </div>
                 </div> 
 @endforeach
             </div>
             <div class="container">
                 <div class="swiper-pagination"></div>
             </div>
+        </div>
+        <hr class="mouse-hr">
+        <div class="mouse_scroll">
+            <a href="#!">
+                <div class="mouse">
+                    <div>
+                        <span class="m_scroll_arrows unu"></span>
+                        <span class="m_scroll_arrows doi"></span>
+                        <span class="m_scroll_arrows trei"></span>
+                    </div>
+                </div>    
+            </a>
         </div>
     </section>
     <!--Home End-->
